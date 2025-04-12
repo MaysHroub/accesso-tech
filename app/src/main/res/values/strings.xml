@@ -46,4 +46,9 @@
     <string name="looking_for_something_specific">Looking for something specific?</string>
     <string name="click_to_search">Click to Search</string>
     <string name="see_more">See more</string>
+    <string name="search">Search</string>
+    <string name="apply_filter">Apply Filter</string>
+    <string name="price_range">Price Range:</string>
+    <string name="from">From</string>
+    <string name="to">To</string>
 </resources>
