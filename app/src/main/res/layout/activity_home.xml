@@ -17,7 +17,7 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <ImageView
-            android:id="@+id/userImage"
+            android:id="@+id/imgUser"
             android:layout_width="70dp"
             android:layout_height="70dp"
             app:layout_constraintStart_toStartOf="parent"
@@ -26,15 +26,15 @@
 
         <TextView
             android:id="@+id/txtHello"
-            style="@style/reqular_coloured_text"
+            style="@style/large_coloured_text"
             android:layout_marginStart="20dp"
             android:text="Hello!\nUsername"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/userImage"
+            app:layout_constraintStart_toEndOf="@+id/imgUser"
             app:layout_constraintTop_toTopOf="parent" />
 
         <ImageView
-            android:id="@+id/cartImage"
+            android:id="@+id/imgCart"
             android:layout_width="40dp"
             android:layout_height="40dp"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -62,7 +62,7 @@
             android:text="@string/looking_for_something_specific" />
 
         <Button
-            android:id="@+id/searchBtn"
+            android:id="@+id/btnSearch"
             style="@style/white_button"
             android:layout_gravity="center"
             android:layout_marginTop="15dp"
@@ -73,18 +73,18 @@
     </androidx.appcompat.widget.LinearLayoutCompat>
 
     <ListView
-        android:id="@+id/itemsListView"
+        android:id="@+id/listViewItems"
         android:layout_width="wrap_content"
         android:layout_height="0dp"
         android:layout_marginTop="40dp"
         android:layout_marginBottom="20dp"
-        app:layout_constraintBottom_toTopOf="@+id/seeMoreBtn"
+        app:layout_constraintBottom_toTopOf="@+id/btnSeeMore"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/linearLayoutCompat" />
 
     <Button
-        android:id="@+id/seeMoreBtn"
+        android:id="@+id/btnSeeMore"
         style="@style/white_button"
         android:background="#00FFFFFF"
         android:drawableEnd="@drawable/baseline_arrow_forward_24"
