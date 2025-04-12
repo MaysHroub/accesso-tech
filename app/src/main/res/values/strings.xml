@@ -43,4 +43,7 @@
         libero vel nunc consequat, quis tincidunt nisl eleifend. Cras bibendum enim a justo luctus
         vestibulum. Fusce dictum libero quis erat maximus, vitae volutpat diam dignissim.
     </string>
+    <string name="looking_for_something_specific">Looking for something specific?</string>
+    <string name="click_to_search">Click to Search</string>
+    <string name="see_more">See more</string>
 </resources>
