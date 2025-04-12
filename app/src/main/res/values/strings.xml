@@ -51,4 +51,6 @@
     <string name="price_range">Price Range:</string>
     <string name="from">From</string>
     <string name="to">To</string>
+    <string name="add_to_cart">Add to cart</string>
+    <string name="dummy_description">Experience crystal-clear sound with these high-performance wireless earbuds. Designed for comfort and durability, they feature noise isolation, touch controls, and a sleek charging case that keeps you powered throughout the day. Perfect for music lovers, gamers, or anyone on the go.</string>
 </resources>
