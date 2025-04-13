@@ -101,18 +101,18 @@
 
         <TextView
             android:id="@+id/txtItemDescription"
+            style="@style/small_black_text"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_marginStart="24dp"
-            android:layout_marginTop="40dp"
+            android:layout_marginTop="32dp"
             android:layout_marginEnd="24dp"
             android:layout_marginBottom="40dp"
             android:text="@string/dummy_description"
-            style="@style/small_black_text"
             app:layout_constraintBottom_toTopOf="@+id/btnAddToCart"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/txtItemRating" />
+            app:layout_constraintTop_toBottomOf="@+id/textView9" />
 
         <Button
             android:id="@+id/btnAddToCart"
@@ -146,6 +146,28 @@
             android:text="$149.9"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
+
+        <TextView
+            android:id="@+id/textView9"
+            style="@style/medium_coloured_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="@string/quantity_in_stock"
+            android:textStyle="normal"
+            app:layout_constraintStart_toStartOf="@+id/txtItemName"
+            app:layout_constraintTop_toBottomOf="@+id/txtItemRating" />
+
+        <TextView
+            android:id="@+id/txtQuantityInStock"
+            style="@style/small_black_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:text="122"
+            app:layout_constraintBottom_toBottomOf="@+id/textView9"
+            app:layout_constraintStart_toEndOf="@+id/textView9"
+            app:layout_constraintTop_toTopOf="@+id/textView9" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
