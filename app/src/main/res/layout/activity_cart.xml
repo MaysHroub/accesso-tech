@@ -9,7 +9,7 @@
     tools:context=".CartActivity">
 
     <ImageView
-        android:id="@+id/imgBackCart"
+        android:id="@+id/imgBack"
         android:layout_width="30dp"
         android:layout_height="30dp"
         android:layout_marginTop="8dp"
@@ -25,7 +25,7 @@
         android:text="@string/cart"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/imgBackCart" />
+        app:layout_constraintTop_toTopOf="@+id/imgBack" />
 
     <ListView
         android:id="@+id/listViewItemsToBeChecked"
@@ -130,9 +130,9 @@
         android:id="@+id/imgRemoveCart"
         android:layout_width="40dp"
         android:layout_height="40dp"
-        app:layout_constraintBottom_toBottomOf="@+id/imgBackCart"
+        app:layout_constraintBottom_toBottomOf="@+id/imgBack"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/imgBackCart"
+        app:layout_constraintTop_toTopOf="@+id/imgBack"
         app:srcCompat="@drawable/baseline_remove_shopping_cart_24" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
