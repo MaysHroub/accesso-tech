@@ -13,6 +13,9 @@
         android:theme="@style/Theme.AccessoTech"
         tools:targetApi="31">
         <activity
+            android:name=".UserProfileActivity"
+            android:exported="false" />
+        <activity
             android:name=".SignUpActivity"
             android:exported="false" />
         <activity
