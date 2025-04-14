@@ -57,7 +57,7 @@
         app:layout_constraintTop_toBottomOf="@+id/constraintLayout">
 
         <TextView
-            style="@style/header_white_text"
+            style="@style/large_white_text"
             android:layout_gravity="center"
             android:text="@string/looking_for_something_specific" />
 
