@@ -1,7 +1,9 @@
 package com.example.accessotech.adapter;
 
+import static android.view.View.GONE;
+
 import android.content.Context;
-import android.net.Uri;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,7 +14,9 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.accessotech.R;
+import com.example.accessotech.activity.ItemDetailsActivity;
 import com.example.accessotech.model.Item;
+import com.google.gson.Gson;
 
 import java.util.List;
 
@@ -40,9 +44,14 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.ItemViewHolder
         holder.txtViewPrice.setText(item.getUnitPrice()+"");
         holder.txtViewRating.setText(item.getRating()+"");
         holder.txtViewQuantityInStock.setText(item.getQuantityInStock()+"");
-        holder.txtViewDiscount.setText(String.format("%d%% OFF", item.getDiscount()));
-        // TODO: Fix the image path
+        if (item.getDiscount() > 0)
+            holder.txtViewDiscount.setText(String.format("%d%% OFF", item.getDiscount()));
+        else
+            holder.txtViewDiscount.setVisibility(GONE);
+        // TODO: Fix the image path and replace it with resource id
         // holder.imgItem.setImageURI(Uri.parse(item.getImgUrl()));
+
+        holder.addClickListener(context, item);
     }
 
     @Override
@@ -53,9 +62,11 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.ItemViewHolder
     static class ItemViewHolder extends RecyclerView.ViewHolder {
         TextView txtViewName, txtViewPrice, txtViewRating, txtViewQuantityInStock, txtViewDiscount;
         ImageView imgItem;
+        private View itemView;
 
         public ItemViewHolder(@NonNull View itemView) {
             super(itemView);
+            this.itemView = itemView;
             txtViewName = itemView.findViewById(R.id.txtViewItemName);
             txtViewPrice = itemView.findViewById(R.id.txtViewItemPrice);
             txtViewRating = itemView.findViewById(R.id.txtViewItemRating);
@@ -63,6 +74,18 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.ItemViewHolder
             txtViewDiscount = itemView.findViewById(R.id.txtViewItemDiscount);
             imgItem = itemView.findViewById(R.id.imgItem);
         }
+
+        public void addClickListener(Context context, Item item) {
+            itemView.setOnClickListener(v -> {
+                Intent intent = new Intent(itemView.getContext(), ItemDetailsActivity.class);
+                Gson gson = new Gson();
+                String json = gson.toJson(item);
+                intent.putExtra("activity", context.getClass().getName());
+                intent.putExtra("item", json);
+                context.startActivity(intent);
+            });
+        }
+
     }
 
 }
