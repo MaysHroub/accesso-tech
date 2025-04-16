@@ -24,7 +24,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="8dp"
         android:text="Sony Headphones"
         app:layout_constraintStart_toEndOf="@+id/imgItem"
         app:layout_constraintTop_toTopOf="@+id/imgItem" />
@@ -34,22 +33,23 @@
         style="@style/medium_black_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
         android:drawablePadding="5dp"
         android:text="5.0"
         app:drawableStartCompat="@drawable/baseline_star_24"
-        app:layout_constraintStart_toStartOf="@+id/txtViewItemName"
-        app:layout_constraintTop_toBottomOf="@+id/txtViewItemName" />
+        app:layout_constraintBottom_toBottomOf="@+id/textView18"
+        app:layout_constraintStart_toEndOf="@+id/textView18"
+        app:layout_constraintTop_toTopOf="@+id/textView18" />
 
     <TextView
         android:id="@+id/txtViewItemPrice"
-        style="@style/large_black_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="1099.9"
+        style="@style/medium_black_text"
         app:drawableStartCompat="@drawable/baseline_attach_money_24"
-        app:layout_constraintBottom_toBottomOf="@+id/imgItem"
-        app:layout_constraintStart_toStartOf="@+id/txtViewItemRating" />
+        app:layout_constraintBottom_toBottomOf="@+id/textView15"
+        app:layout_constraintStart_toEndOf="@+id/textView15"
+        app:layout_constraintTop_toTopOf="@+id/textView15" />
 
     <TextView
         android:id="@+id/txtViewItemDiscount"
@@ -57,11 +57,52 @@
         android:layout_width="200dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
-        android:layout_marginEnd="-60dp"
+        android:layout_marginEnd="-64dp"
         android:background="#E86F74"
         android:rotation="45"
         android:text="50% OFF"
         android:textAlignment="center"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textView15"
+        style="@style/medium_coloured_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:text="@string/price"
+        app:layout_constraintStart_toStartOf="@+id/textView18"
+        app:layout_constraintTop_toBottomOf="@+id/txtViewItemRating" />
+
+    <TextView
+        android:id="@+id/textView16"
+        style="@style/small_black_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="@string/quantity_in_stock"
+        app:layout_constraintStart_toStartOf="@+id/textView18"
+        app:layout_constraintTop_toBottomOf="@+id/textView15" />
+
+    <TextView
+        android:id="@+id/txtViewItemQuantityInStock"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:text="15"
+        style="@style/small_black_text"
+        app:layout_constraintBottom_toBottomOf="@+id/textView16"
+        app:layout_constraintStart_toEndOf="@+id/textView16"
+        app:layout_constraintTop_toTopOf="@+id/textView16" />
+
+    <TextView
+        android:id="@+id/textView18"
+        style="@style/medium_coloured_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="Rating:"
+        app:layout_constraintStart_toStartOf="@+id/txtViewItemName"
+        app:layout_constraintTop_toBottomOf="@+id/txtViewItemName" />
 </androidx.constraintlayout.widget.ConstraintLayout>
