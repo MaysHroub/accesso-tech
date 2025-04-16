@@ -42,7 +42,7 @@ public class MainActivity extends AppCompatActivity {
             if (hasAccount)
                 intent = new Intent(MainActivity.this, LoginActivity.class);
             else
-                intent = new Intent(MainActivity.this, SignUpActivity.class);
+                intent = new Intent(MainActivity.this, CreateAccountActivity.class);
             startActivity(intent);
             finish();
         }, 5000);

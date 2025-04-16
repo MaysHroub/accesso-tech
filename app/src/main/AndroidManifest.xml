@@ -16,7 +16,7 @@
             android:name=".activity.UserProfileActivity"
             android:exported="false" />
         <activity
-            android:name=".activity.SignUpActivity"
+            android:name=".activity.CreateAccountActivity"
             android:exported="false" />
         <activity
             android:name=".activity.LoginActivity"
