@@ -29,7 +29,7 @@ public class MainActivity extends AppCompatActivity {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
-        prefs = getSharedPreferences(PrefsKeys.MY_SHARED_PREFS.getKey(), Context.MODE_PRIVATE);
+        prefs = getSharedPreferences(PrefsKeys.ACCOUNT_INFO_SHARED_PREF.getKey(), Context.MODE_PRIVATE);
     }
 
     @Override
