@@ -22,7 +22,7 @@ public class InputValidator {
     }
 
     public static boolean validateUserPhoneNumber(String phoneNumber) {
-        return phoneNumber.length() > 9 && phoneNumber.length() < 13;
+        return phoneNumber.length() > 9;
     }
 
     public static boolean validateUserEmail(String email) {
