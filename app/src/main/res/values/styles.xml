@@ -46,12 +46,30 @@
         <item name="android:textSize">16sp</item>
     </style>
 
-    <style name="small_black_text">
+    <style name="small_grey_text">
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:textColor">#6F6F6F</item>
         <item name="android:fontFamily">sans-serif</item>
         <item name="android:textSize">16sp</item>
+    </style>
+
+    <style name="small_bold_grey_text">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textColor">#6F6F6F</item>
+        <item name="android:fontFamily">sans-serif</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="small_coloured_text">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textColor">#3A8CB7</item>
+        <item name="android:fontFamily">sans-serif</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:textStyle">bold</item>
     </style>
 
     <style name="large_white_text">
