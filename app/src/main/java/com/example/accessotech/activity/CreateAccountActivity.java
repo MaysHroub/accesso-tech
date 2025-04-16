@@ -1,6 +1,7 @@
 package com.example.accessotech.activity;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
@@ -63,6 +64,7 @@ public class CreateAccountActivity extends AppCompatActivity {
         else {
             toastMessage = "Account created successfully";
             saveUserAccountState();
+            launchHomeActivity();
         }
         Toast.makeText(this, toastMessage, Toast.LENGTH_SHORT).show();
     }
@@ -79,4 +81,11 @@ public class CreateAccountActivity extends AppCompatActivity {
         editor.putString(PrefsKeys.CARD_NUMBER.getKey(), edtTxtCardNumber.getText().toString());
         editor.apply();
     }
+
+    private void launchHomeActivity() {
+        Intent intent = new Intent(CreateAccountActivity.this, HomeActivity.class);
+        startActivity(intent);
+        finish();
+    }
+
 }
