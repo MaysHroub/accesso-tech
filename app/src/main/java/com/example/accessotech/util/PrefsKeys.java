@@ -5,7 +5,7 @@ import lombok.Getter;
 @Getter
 public enum PrefsKeys {
     MY_SHARED_PREFS("my_shared_pref"),
-    HAS_ACCOUNT("has_account");
+    ACCOUNT_EXISTS("account_exists");
 
     private final String key;
 

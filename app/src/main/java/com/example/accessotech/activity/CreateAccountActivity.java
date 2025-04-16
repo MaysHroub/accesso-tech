@@ -3,7 +3,6 @@ package com.example.accessotech.activity;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -12,7 +11,6 @@ import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowCompat;
 import androidx.core.view.WindowInsetsCompat;
 
 import com.example.accessotech.R;
@@ -64,15 +62,15 @@ public class CreateAccountActivity extends AppCompatActivity {
             toastMessage = "Card number must consist of 16 numbers";
         else {
             toastMessage = "Account created successfully";
-            saveUserAccountCreation();
+            saveUserAccountState();
         }
         Toast.makeText(this, toastMessage, Toast.LENGTH_SHORT).show();
     }
 
-    private void saveUserAccountCreation() {
+    private void saveUserAccountState() {
         SharedPreferences prefs = getSharedPreferences(PrefsKeys.MY_SHARED_PREFS.getKey(), Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = prefs.edit();
-        editor.putBoolean(PrefsKeys.HAS_ACCOUNT.getKey(), true);
+        editor.putBoolean(PrefsKeys.ACCOUNT_EXISTS.getKey(), true);
         editor.apply();
     }
 }

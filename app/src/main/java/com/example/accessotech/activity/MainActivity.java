@@ -37,7 +37,7 @@ public class MainActivity extends AppCompatActivity {
         super.onResume();
         Handler handler = new Handler();
         handler.postDelayed(() -> {
-            boolean hasAccount = prefs.getBoolean(PrefsKeys.HAS_ACCOUNT.getKey(), false);
+            boolean hasAccount = prefs.getBoolean(PrefsKeys.ACCOUNT_EXISTS.getKey(), false);
             Intent intent;
             if (hasAccount)
                 intent = new Intent(MainActivity.this, LoginActivity.class);
