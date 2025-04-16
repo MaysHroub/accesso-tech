@@ -128,11 +128,12 @@
         <TextView
             android:id="@+id/textView7"
             style="@style/medium_coloured_text"
-            android:textStyle="normal"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginStart="4dp"
             android:layout_marginBottom="-5dp"
             android:text="Price"
+            android:textStyle="normal"
             app:layout_constraintBottom_toTopOf="@+id/txtItemPrice"
             app:layout_constraintStart_toStartOf="@+id/txtItemPrice" />
 

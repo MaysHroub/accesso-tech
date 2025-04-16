@@ -1,67 +1,117 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.cardview.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/ItemLayout"
+    app:cardCornerRadius="24dp"
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
-    <ImageView
-        android:id="@+id/imgItem"
-        android:layout_width="120dp"
-        android:layout_height="120dp"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="24dp"
-        android:layout_marginBottom="24dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/bear" />
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
-    <TextView
-        android:id="@+id/txtViewItemName"
-        style="@style/large_coloured_text"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="8dp"
-        android:text="Sony Headphones"
-        app:layout_constraintStart_toEndOf="@+id/imgItem"
-        app:layout_constraintTop_toTopOf="@+id/imgItem" />
+        <ImageView
+            android:id="@+id/imgItem"
+            android:layout_width="120dp"
+            android:layout_height="120dp"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="24dp"
+            android:layout_marginBottom="24dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/bear" />
 
-    <TextView
-        android:id="@+id/txtViewItemRating"
-        style="@style/medium_black_text"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:drawablePadding="5dp"
-        android:text="5.0"
-        app:drawableStartCompat="@drawable/baseline_star_24"
-        app:layout_constraintStart_toStartOf="@+id/txtViewItemName"
-        app:layout_constraintTop_toBottomOf="@+id/txtViewItemName" />
+        <TextView
+            android:id="@+id/txtViewItemName"
+            style="@style/large_coloured_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:text="Sony Headphones"
+            app:layout_constraintStart_toEndOf="@+id/imgItem"
+            app:layout_constraintTop_toTopOf="@+id/imgItem" />
 
-    <TextView
-        android:id="@+id/txtViewItemPrice"
-        style="@style/large_black_text"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="1099.9"
-        app:drawableStartCompat="@drawable/baseline_attach_money_24"
-        app:layout_constraintBottom_toBottomOf="@+id/imgItem"
-        app:layout_constraintStart_toStartOf="@+id/txtViewItemRating" />
+        <TextView
+            android:id="@+id/txtViewItemRating"
+            style="@style/medium_black_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:drawablePadding="5dp"
+            android:text="5.0"
+            app:drawableStartCompat="@drawable/baseline_star_24"
+            app:layout_constraintBottom_toBottomOf="@+id/textView18"
+            app:layout_constraintStart_toEndOf="@+id/textView18"
+            app:layout_constraintTop_toTopOf="@+id/textView18" />
 
-    <TextView
-        android:id="@+id/txtViewItemDiscount"
-        style="@style/small_white_text"
-        android:layout_width="200dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
-        android:layout_marginEnd="-60dp"
-        android:background="#E86F74"
-        android:rotation="45"
-        android:text="50% OFF"
-        android:textAlignment="center"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <TextView
+            android:id="@+id/txtViewItemPrice"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="1099.9"
+            style="@style/medium_black_text"
+            app:drawableStartCompat="@drawable/baseline_attach_money_24"
+            app:layout_constraintBottom_toBottomOf="@+id/textView15"
+            app:layout_constraintStart_toEndOf="@+id/textView15"
+            app:layout_constraintTop_toTopOf="@+id/textView15" />
+
+        <TextView
+            android:id="@+id/txtViewItemDiscount"
+            style="@style/small_white_text"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:layout_marginEnd="-64dp"
+            android:background="#E86F74"
+            android:rotation="45"
+            android:text="50% OFF"
+            android:textAlignment="center"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/textView15"
+            style="@style/medium_coloured_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:text="@string/price"
+            app:layout_constraintStart_toStartOf="@+id/textView18"
+            app:layout_constraintTop_toBottomOf="@+id/txtViewItemRating" />
+
+        <TextView
+            android:id="@+id/textView16"
+            style="@style/small_black_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="@string/quantity_in_stock"
+            app:layout_constraintStart_toStartOf="@+id/textView18"
+            app:layout_constraintTop_toBottomOf="@+id/textView15" />
+
+        <TextView
+            android:id="@+id/txtViewItemQuantityInStock"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:text="15"
+            style="@style/small_black_text"
+            app:layout_constraintBottom_toBottomOf="@+id/textView16"
+            app:layout_constraintStart_toEndOf="@+id/textView16"
+            app:layout_constraintTop_toTopOf="@+id/textView16" />
+
+        <TextView
+            android:id="@+id/textView18"
+            style="@style/medium_coloured_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="Rating:"
+            app:layout_constraintStart_toStartOf="@+id/txtViewItemName"
+            app:layout_constraintTop_toBottomOf="@+id/txtViewItemName" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.cardview.widget.CardView>
