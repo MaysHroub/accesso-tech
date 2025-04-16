@@ -3,6 +3,7 @@ package com.example.accessotech.activity;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -11,6 +12,7 @@ import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
+import androidx.core.view.WindowCompat;
 import androidx.core.view.WindowInsetsCompat;
 
 import com.example.accessotech.R;
@@ -50,9 +52,15 @@ public class CreateAccountActivity extends AppCompatActivity {
         if (!InputValidator.validateEditTexts(edtTxtUsername, edtTxtEmail, edtTxtPassword,
                 edtTxtConfirmPassword, edtTxtAddress, edtTxtPhone, edtTxtCardNumber))
             toastMessage = "Some fields are still empty";
-        else if (!edtTxtPassword.getText().equals(edtTxtConfirmPassword.getText()))
-            toastMessage = "Password doesn't match";
-        else if (edtTxtCardNumber.length() != 16)
+        else if (!InputValidator.validateUserEmail(edtTxtEmail.getText().toString()))
+            toastMessage = "Invalid email";
+        else if (!InputValidator.validateUserPassword(edtTxtPassword.getText().toString()))
+            toastMessage = "Password must consist of at least 8 characters and has letters and numbers";
+        else if (!edtTxtPassword.getText().toString().equals(edtTxtConfirmPassword.getText().toString()))
+            toastMessage = "Passwords don't match";
+        else if (!InputValidator.validateUserPhoneNumber(edtTxtPhone.getText().toString()))
+            toastMessage = "Invalid phone number";
+        else if (!InputValidator.validateUserCardNumber(edtTxtCardNumber.getText().toString()))
             toastMessage = "Card number must consist of 16 numbers";
         else {
             toastMessage = "Account created successfully";
