@@ -42,7 +42,7 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.ItemViewHolder
         holder.txtViewQuantityInStock.setText(item.getQuantityInStock()+"");
         holder.txtViewDiscount.setText(String.format("%d%% OFF", item.getDiscount()));
         // TODO: Fix the image path
-        holder.imgItem.setImageURI(Uri.parse(item.getImgUrl()));
+        // holder.imgItem.setImageURI(Uri.parse(item.getImgUrl()));
     }
 
     @Override
