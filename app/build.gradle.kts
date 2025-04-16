@@ -35,7 +35,8 @@ android {
 }
 
 dependencies {
-
+    annotationProcessor(libs.lombok.v11838)
+    annotationProcessor(libs.lombok.v11838)
     implementation(libs.appcompat)
     implementation(libs.material)
     implementation(libs.activity)
