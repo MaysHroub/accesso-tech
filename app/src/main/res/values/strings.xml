@@ -70,4 +70,5 @@
     <string name="sign_up">Sign Up</string>
     <string name="create_account">Create account</string>
     <string name="price">Price:</string>
+    <string name="item_is_added">Item is added</string>
 </resources>

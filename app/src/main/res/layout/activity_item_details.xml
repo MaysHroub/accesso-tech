@@ -22,6 +22,7 @@
             android:layout_width="30dp"
             android:layout_height="30dp"
             android:layout_marginTop="10dp"
+            android:onClick="backToPreviousActivity"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:srcCompat="@drawable/baseline_arrow_back_ios_new_24" />
@@ -50,7 +51,7 @@
 
 
         <TextView
-            android:id="@+id/txtItemName"
+            android:id="@+id/txtViewName"
             style="@style/large_coloured_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -66,16 +67,15 @@
             android:layout_height="20dp"
             android:layout_marginStart="4dp"
             android:layout_marginTop="8dp"
-            app:layout_constraintStart_toStartOf="@+id/txtItemName"
-            app:layout_constraintTop_toBottomOf="@+id/txtItemName"
+            app:layout_constraintStart_toStartOf="@+id/txtViewName"
+            app:layout_constraintTop_toBottomOf="@+id/txtViewName"
             app:srcCompat="@drawable/star" />
 
         <TextView
-            android:id="@+id/txtItemRating"
+            android:id="@+id/txtViewRating"
             style="@style/medium_black_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-
             android:layout_marginStart="14dp"
             android:text="5.0"
             app:layout_constraintBottom_toBottomOf="@+id/imageView2"
@@ -83,7 +83,7 @@
             app:layout_constraintTop_toTopOf="@+id/imageView2" />
 
         <TextView
-            android:id="@+id/txtDiscount"
+            android:id="@+id/txtViewDiscount"
             style="@style/small_white_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -100,7 +100,7 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/txtItemDescription"
+            android:id="@+id/txtViewDescription"
             style="@style/small_grey_text"
             android:layout_width="match_parent"
             android:layout_height="0dp"
@@ -120,8 +120,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="32dp"
+            android:onClick="addItemToCart"
             android:text="@string/add_to_cart"
-            app:layout_constraintBottom_toBottomOf="@+id/txtItemPrice"
+            app:layout_constraintBottom_toBottomOf="@+id/txtViewPrice"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="@+id/textView7" />
 
@@ -134,11 +135,11 @@
             android:layout_marginBottom="-5dp"
             android:text="Price"
             android:textStyle="normal"
-            app:layout_constraintBottom_toTopOf="@+id/txtItemPrice"
-            app:layout_constraintStart_toStartOf="@+id/txtItemPrice" />
+            app:layout_constraintBottom_toTopOf="@+id/txtViewPrice"
+            app:layout_constraintStart_toStartOf="@+id/txtViewPrice" />
 
         <TextView
-            android:id="@+id/txtItemPrice"
+            android:id="@+id/txtViewPrice"
             style="@style/large_black_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -157,11 +158,11 @@
             android:layout_marginTop="16dp"
             android:text="@string/quantity_in_stock"
             android:textStyle="normal"
-            app:layout_constraintStart_toStartOf="@+id/txtItemName"
-            app:layout_constraintTop_toBottomOf="@+id/txtItemRating" />
+            app:layout_constraintStart_toStartOf="@+id/txtViewName"
+            app:layout_constraintTop_toBottomOf="@+id/txtViewRating" />
 
         <TextView
-            android:id="@+id/txtQuantityInStock"
+            android:id="@+id/txtViewQuantityInStock"
             style="@style/small_grey_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

@@ -28,6 +28,10 @@ public class Cart {
         return cartItems.remove(cartItem);
     }
 
+    public boolean hasItem(Item item) {
+        return cartItems.contains(new CartItem(item, 0));
+    }
+
     public boolean incrementQuantity(CartItem cartItem) {
         return cartItem.incrementQuantityInCart();
     }

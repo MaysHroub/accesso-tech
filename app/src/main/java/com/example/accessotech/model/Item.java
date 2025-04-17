@@ -27,4 +27,7 @@ public class Item {
         return id == ((Item) obj).id;
     }
 
+    // TODO: add method in Item which returns price after discount
+    // TODO: replace imgUrl with imgResId and store images in drawable
+
 }

@@ -80,6 +80,7 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.ItemViewHolder
                 Intent intent = new Intent(itemView.getContext(), ItemDetailsActivity.class);
                 Gson gson = new Gson();
                 String json = gson.toJson(item);
+                intent.putExtra("activity", context.getClass().getName());
                 intent.putExtra("item", json);
                 context.startActivity(intent);
             });
