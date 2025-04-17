@@ -1,5 +1,7 @@
 package com.example.accessotech.model;
 
+import java.util.Objects;
+
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 
@@ -24,6 +26,14 @@ public class CartItem {
         quantityInCart--;
         item.setQuantityInStock(item.getQuantityInStock() + 1);
         return true;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof CartItem)) return false;
+        CartItem cartItem = (CartItem) o;
+        return item.equals(cartItem.item);
     }
 
 }
