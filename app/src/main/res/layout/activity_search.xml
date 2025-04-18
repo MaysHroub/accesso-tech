@@ -99,7 +99,7 @@
             android:text="@string/price_range" />
 
         <EditText
-            android:id="@+id/edtTxtToPrice"
+            android:id="@+id/edtTxtFromPrice"
             android:inputType="numberDecimal"
             android:layout_width="0dp"
             android:layout_height="48dp"
@@ -111,7 +111,7 @@
             android:textAlignment="center" />
 
         <EditText
-            android:id="@+id/edtTxtFromPrice"
+            android:id="@+id/edtTxtToPrice"
             android:inputType="numberDecimal"
             android:layout_width="0dp"
             android:layout_height="48dp"
