@@ -71,9 +71,9 @@ public class SearchActivity extends AppCompatActivity {
                 ItemFilter itemFilter = new ItemFilter(
                         spnrCategory.getSelectedItem().toString(),
                         spnrManufacturer.getSelectedItem().toString(),
-                        Integer.parseInt(spnrRating.getSelectedItem().toString()),
-                        Integer.parseInt(edtTxtFrom.getText().toString()),
-                        Integer.parseInt(edtTxtTo.getText().toString())
+                        (spnrRating.getSelectedItem() == null) ? 0 : Integer.parseInt(spnrRating.getSelectedItem().toString()),
+                        (edtTxtFrom.getText().toString().isEmpty()) ? 0 : Integer.parseInt(edtTxtFrom.getText().toString()),
+                        (edtTxtTo.getText().toString().isEmpty()) ? 0 : Integer.parseInt(edtTxtTo.getText().toString())
                 );
 
                 adapter.filter(s.toString(), itemFilter);
