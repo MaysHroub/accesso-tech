@@ -66,4 +66,10 @@ public class HomeActivity extends AppCompatActivity {
         startActivity(intent);
         finish();
     }
+
+    public void launchUserProfileActivity(View view) {
+        Intent intent = new Intent(HomeActivity.this, UserProfileActivity.class);
+        startActivity(intent);
+        finish();
+    }
 }
