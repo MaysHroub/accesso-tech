@@ -1,6 +1,8 @@
 package com.example.accessotech.activity;
 
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.Spinner;
@@ -15,6 +17,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.accessotech.R;
 import com.example.accessotech.adapter.FilteredItemAdapter;
+import com.example.accessotech.adapter.ItemFilter;
 import com.example.accessotech.dao.ItemDao;
 import com.example.accessotech.dao.ItemDaoImpl;
 
@@ -26,6 +29,7 @@ public class SearchActivity extends AppCompatActivity {
     private EditText edtTxtSearch, edtTxtFrom, edtTxtTo;
     private Spinner spnrCategory, spnrManufacturer, spnrRating;
     private RecyclerView recyclerViewFilteredItems;
+    private FilteredItemAdapter adapter;
     private ItemDao itemDao;
 
 
@@ -52,6 +56,30 @@ public class SearchActivity extends AppCompatActivity {
         spnrManufacturer = findViewById(R.id.spinnerCompany);
         spnrRating = findViewById(R.id.spinnerRating);
         recyclerViewFilteredItems = findViewById(R.id.recyclerViewFilteredItems);
+        addListenerToEditTextSearch();
+    }
+
+    private void addListenerToEditTextSearch() {
+        edtTxtSearch.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                ItemFilter itemFilter = new ItemFilter(
+                        spnrCategory.getSelectedItem().toString(),
+                        spnrManufacturer.getSelectedItem().toString(),
+                        Integer.parseInt(spnrRating.getSelectedItem().toString()),
+                        Integer.parseInt(edtTxtFrom.getText().toString()),
+                        Integer.parseInt(edtTxtTo.getText().toString())
+                );
+
+                adapter.filter(s.toString(), itemFilter);
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {}
+        });
     }
 
     private void fillViewsWithData() {
@@ -84,7 +112,7 @@ public class SearchActivity extends AppCompatActivity {
     }
 
     private void fillRecyclerViewWithData() {
-        FilteredItemAdapter adapter = new FilteredItemAdapter(this, itemDao.findAllItems());
+        adapter = new FilteredItemAdapter(this, itemDao.findAllItems());
         recyclerViewFilteredItems.setLayoutManager(new LinearLayoutManager(this));
         recyclerViewFilteredItems.setAdapter(adapter);
     }
