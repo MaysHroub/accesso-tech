@@ -58,30 +58,6 @@ public class SearchActivity extends AppCompatActivity {
         spnrManufacturer = findViewById(R.id.spinnerCompany);
         spnrRating = findViewById(R.id.spinnerRating);
         recyclerViewFilteredItems = findViewById(R.id.recyclerViewFilteredItems);
-        addListenerToEditTextSearch();
-    }
-
-    private void addListenerToEditTextSearch() {
-        edtTxtSearch.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
-
-            @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count) {
-                ItemFilter itemFilter = new ItemFilter(
-                        spnrCategory.getSelectedItem().toString(),
-                        spnrManufacturer.getSelectedItem().toString(),
-                        (spnrRating.getSelectedItem() == null) ? 0 : Integer.parseInt(spnrRating.getSelectedItem().toString()),
-                        (edtTxtFrom.getText().toString().isEmpty()) ? 0 : Integer.parseInt(edtTxtFrom.getText().toString()),
-                        (edtTxtTo.getText().toString().isEmpty()) ? 0 : Integer.parseInt(edtTxtTo.getText().toString())
-                );
-
-                adapter.filter(s.toString(), itemFilter);
-            }
-
-            @Override
-            public void afterTextChanged(Editable s) {}
-        });
     }
 
     private void fillViewsWithData() {
@@ -124,4 +100,32 @@ public class SearchActivity extends AppCompatActivity {
         startActivity(intent);
         finish();
     }
+
+    public void searchForItemAndUpdateRecyclerView(View view) {
+        ItemFilter itemFilter = new ItemFilter(
+                spnrCategory.getSelectedItem().toString(),
+                spnrManufacturer.getSelectedItem().toString(),
+                (spnrRating.getSelectedItem() == null) ? 0 : Integer.parseInt(spnrRating.getSelectedItem().toString()),
+                (edtTxtFrom.getText().toString().isEmpty()) ? 0 : Integer.parseInt(edtTxtFrom.getText().toString()),
+                (edtTxtTo.getText().toString().isEmpty()) ? 0 : Integer.parseInt(edtTxtTo.getText().toString())
+        );
+
+        adapter.filter(edtTxtSearch.getText().toString(), itemFilter);
+    }
+
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
