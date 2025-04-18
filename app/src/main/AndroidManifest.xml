@@ -36,11 +36,11 @@
         <activity
             android:name=".activity.HomeActivity"
             android:exported="true">
-            <intent-filter>
+            <intent-itemFilter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
+            </intent-itemFilter>
         </activity>
     </application>
 
