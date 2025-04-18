@@ -10,9 +10,11 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.accessotech.R;
+import com.example.accessotech.adapter.FilteredItemAdapter;
 import com.example.accessotech.dao.ItemDao;
 import com.example.accessotech.dao.ItemDaoImpl;
 
@@ -82,7 +84,9 @@ public class SearchActivity extends AppCompatActivity {
     }
 
     private void fillRecyclerViewWithData() {
-
+        FilteredItemAdapter adapter = new FilteredItemAdapter(this, itemDao.findAllItems());
+        recyclerViewFilteredItems.setLayoutManager(new LinearLayoutManager(this));
+        recyclerViewFilteredItems.setAdapter(adapter);
     }
 
 }
