@@ -2,6 +2,8 @@ package com.example.accessotech.adapter;
 
 import static android.view.View.GONE;
 
+import static com.example.accessotech.activity.SearchActivity.CATEGORY_OPTION;
+import static com.example.accessotech.activity.SearchActivity.MANUFACTURER_OPTION;
 import static com.example.accessotech.adapter.ItemFilter.CATEGORY;
 import static com.example.accessotech.adapter.ItemFilter.MANUFACTURER;
 import static com.example.accessotech.adapter.ItemFilter.PRICE;
@@ -79,9 +81,9 @@ public class FilteredItemAdapter extends RecyclerView.Adapter<ItemViewHolder> {
             reset(mask);
             if (!item.getName().toLowerCase().contains(searchText))
                 continue;
-            if (!category.isEmpty() && !item.getCategory().equals(category))
+            if (!category.equals(CATEGORY_OPTION) && !item.getCategory().equals(category))
                 mask[CATEGORY] = false;
-            if (!manufacturer.isEmpty() && !item.getManufacturer().equals(manufacturer))
+            if (!manufacturer.equals(MANUFACTURER_OPTION) && !item.getManufacturer().equals(manufacturer))
                 mask[MANUFACTURER] = false;
             if (rating != 0 && item.getRating() != rating)
                 mask[RATING] = false;

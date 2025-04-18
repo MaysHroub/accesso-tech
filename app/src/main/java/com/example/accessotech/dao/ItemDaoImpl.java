@@ -70,4 +70,9 @@ public class ItemDaoImpl implements ItemDao {
         item.setId(id);
         items.remove(item);
     }
+
+    @Override
+    public List<String> findAllRatings() {
+        return List.of("1", "2", "3", "4", "5");
+    }
 }

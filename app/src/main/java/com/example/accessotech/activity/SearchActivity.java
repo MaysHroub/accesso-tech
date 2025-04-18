@@ -2,8 +2,6 @@ package com.example.accessotech.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.text.Editable;
-import android.text.TextWatcher;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
@@ -23,10 +21,9 @@ import com.example.accessotech.adapter.ItemFilter;
 import com.example.accessotech.dao.ItemDao;
 import com.example.accessotech.dao.ItemDaoImpl;
 
-import java.util.ArrayList;
-import java.util.List;
-
 public class SearchActivity extends AppCompatActivity {
+
+    public static final String CATEGORY_OPTION = "Category", MANUFACTURER_OPTION = "Manufacturer", RATING_OPTION = "Rating";
 
     private EditText edtTxtSearch, edtTxtFrom, edtTxtTo;
     private Spinner spnrCategory, spnrManufacturer, spnrRating;
@@ -71,6 +68,7 @@ public class SearchActivity extends AppCompatActivity {
                 androidx.appcompat.R.layout.support_simple_spinner_dropdown_item,
                 itemDao.findAllCategories()
         );
+        categoryAdapter.insert(CATEGORY_OPTION, 0);
         spnrCategory.setAdapter(categoryAdapter);
 
         ArrayAdapter<String> manufacturerAdapter = new ArrayAdapter<>(
@@ -78,14 +76,15 @@ public class SearchActivity extends AppCompatActivity {
                 androidx.appcompat.R.layout.support_simple_spinner_dropdown_item,
                 itemDao.findAllManufacturers()
         );
+        manufacturerAdapter.insert(MANUFACTURER_OPTION, 0);
         spnrManufacturer.setAdapter(manufacturerAdapter);
 
-        Integer[] ratings = {1, 2, 3, 4, 5};
-        ArrayAdapter<Integer> ratingAdapter = new ArrayAdapter<>(
+        ArrayAdapter<String> ratingAdapter = new ArrayAdapter<>(
                 this,
                 androidx.appcompat.R.layout.support_simple_spinner_dropdown_item,
-                ratings
+                itemDao.findAllRatings()
         );
+        ratingAdapter.insert(RATING_OPTION, 0);
         spnrRating.setAdapter(ratingAdapter);
     }
 
@@ -105,7 +104,7 @@ public class SearchActivity extends AppCompatActivity {
         ItemFilter itemFilter = new ItemFilter(
                 spnrCategory.getSelectedItem().toString(),
                 spnrManufacturer.getSelectedItem().toString(),
-                (spnrRating.getSelectedItem() == null) ? 0 : Integer.parseInt(spnrRating.getSelectedItem().toString()),
+                (spnrRating.getSelectedItem().toString().equals(RATING_OPTION)) ? 0 : Integer.parseInt(spnrRating.getSelectedItem().toString()),
                 (edtTxtFrom.getText().toString().isEmpty()) ? 0 : Integer.parseInt(edtTxtFrom.getText().toString()),
                 (edtTxtTo.getText().toString().isEmpty()) ? 0 : Integer.parseInt(edtTxtTo.getText().toString())
         );

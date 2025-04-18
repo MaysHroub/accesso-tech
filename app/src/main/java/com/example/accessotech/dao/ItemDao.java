@@ -15,5 +15,5 @@ public interface ItemDao {
     List<String> findAllManufacturers();
     void deleteAllItems();
     void deleteItemById(int id);
-
+    List<String> findAllRatings();
 }
