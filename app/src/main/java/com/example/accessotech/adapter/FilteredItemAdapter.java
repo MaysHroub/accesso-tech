@@ -67,11 +67,6 @@ public class FilteredItemAdapter extends RecyclerView.Adapter<ItemViewHolder> {
 
     public void filter(String searchText, ItemFilter itemFilter) {
         filteredItems.clear();
-        if (searchText.isEmpty()) {
-            filteredItems.addAll(originalItems);
-            notifyDataSetChanged();
-            return;
-        }
         String category = itemFilter.getCategory(), manufacturer = itemFilter.getManufacturer();
         int rating = itemFilter.getRating(), fromPrice = itemFilter.getFromPrice(), toPrice = itemFilter.getToPrice();
 
