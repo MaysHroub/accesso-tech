@@ -1,8 +1,10 @@
 package com.example.accessotech.activity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.Spinner;
@@ -117,4 +119,9 @@ public class SearchActivity extends AppCompatActivity {
         recyclerViewFilteredItems.setAdapter(adapter);
     }
 
+    public void navigateBackToHomeActivity(View view) {
+        Intent intent = new Intent(SearchActivity.this, HomeActivity.class);
+        startActivity(intent);
+        finish();
+    }
 }
