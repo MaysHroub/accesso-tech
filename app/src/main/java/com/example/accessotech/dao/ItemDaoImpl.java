@@ -11,12 +11,12 @@ import java.util.Set;
 public class ItemDaoImpl implements ItemDao {
 
     private final List<Item> items;
-    private final Set<String> categories, manufacturers;
+    private final List<String> categories, manufacturers;
 
     public ItemDaoImpl() {
         items = new ArrayList<>();
-        categories = new HashSet<>();
-        manufacturers = new HashSet<>();
+        categories = new ArrayList<>();
+        manufacturers = new ArrayList<>();
         DataLoader dataLoader = new DataLoader(this);
         dataLoader.loadData();
     }
@@ -27,12 +27,12 @@ public class ItemDaoImpl implements ItemDao {
     }
 
     @Override
-    public void saveAllCategories(Set<String> categories) {
+    public void saveAllCategories(List<String> categories) {
         this.categories.addAll(categories);
     }
 
     @Override
-    public void saveAllManufacturers(Set<String> manufacturers) {
+    public void saveAllManufacturers(List<String> manufacturers) {
         this.manufacturers.addAll(manufacturers);
     }
 
@@ -50,12 +50,12 @@ public class ItemDaoImpl implements ItemDao {
     }
 
     @Override
-    public Set<String> findAllCategories() {
+    public List<String> findAllCategories() {
         return categories;
     }
 
     @Override
-    public Set<String> findAllManufacturers() {
+    public List<String> findAllManufacturers() {
         return manufacturers;
     }
 

@@ -21,7 +21,7 @@ public class DataLoader {
     }
 
     private void loadCategories() {
-        itemDao.saveAllCategories(Set.of(
+        itemDao.saveAllCategories(List.of(
                 "Earbuds",
                 "Headphones",
                 "Chargers",
@@ -42,7 +42,7 @@ public class DataLoader {
     }
 
     private void loadManufacturers() {
-        itemDao.saveAllManufacturers(Set.of(
+        itemDao.saveAllManufacturers(List.of(
                 "Apple",
                 "Samsung",
                 "Anker",
