@@ -17,7 +17,12 @@ public class DataLoader {
     public void loadData() {
         loadCategories();
         loadManufacturers();
+        loadRatings();
         loadItems();
+    }
+
+    private void loadRatings() {
+        itemDao.saveAllRatings(List.of("1", "2", "3", "4", "5"));
     }
 
     private void loadCategories() {

@@ -9,6 +9,7 @@ public interface ItemDao {
     void saveAllItems(List<Item> items);
     void saveAllCategories(List<String> categories);
     void saveAllManufacturers(List<String> manufacturers);
+    void saveAllRatings(List<String> ratings);
     List<Item> findAllItems();
     Item findItemById(int id);
     List<String> findAllCategories();
