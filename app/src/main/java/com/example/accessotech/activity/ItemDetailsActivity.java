@@ -89,11 +89,9 @@ public class ItemDetailsActivity extends AppCompatActivity {
     }
 
     public void addItemToCart(View view) {
-        boolean added = Cart.getInstance().addItem(item);
-        if (added) {
-            btnAddToCart.setEnabled(false);
-            btnAddToCart.setText(R.string.item_is_added);
-        }
+        Cart.getInstance().addItem(item);
+        btnAddToCart.setEnabled(false);
+        btnAddToCart.setText(R.string.item_is_added);
     }
 
     public void backToPreviousActivity(View view) {

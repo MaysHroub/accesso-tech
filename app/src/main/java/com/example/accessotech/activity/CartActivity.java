@@ -1,6 +1,7 @@
 package com.example.accessotech.activity;
 
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -20,7 +21,6 @@ import com.example.accessotech.model.Cart;
 public class CartActivity extends AppCompatActivity {
 
     private TextView txtViewTotalPrice;
-    private ImageView imgBack, imgClearCart;
     private Button btnCheckout;
     private RecyclerView recyclerViewCartItems;
 
@@ -41,16 +41,37 @@ public class CartActivity extends AppCompatActivity {
     private void setUpViews() {
         // TODO: rename components in xml
         txtViewTotalPrice = findViewById(R.id.txtTotalPrice);
-        imgBack = findViewById(R.id.imgBack);
-        imgClearCart = findViewById(R.id.imgRemoveCart);
-        btnCheckout = findViewById(R.id.btnCheckout);
         recyclerViewCartItems = findViewById(R.id.recyclerViewCartItems);
+        btnCheckout = findViewById(R.id.btnCheckout);
+        if (Cart.getInstance().isEmpty())
+            btnCheckout.setEnabled(false);
+        updateTextViewTotalPrice();
     }
 
     private void populateRecyclerView() {
         CartItemAdapter adapter = new CartItemAdapter(this, Cart.getInstance().getCartItems());
         recyclerViewCartItems.setLayoutManager(new LinearLayoutManager(this));
         recyclerViewCartItems.setAdapter(adapter);
+    }
+
+    public void updateTextViewTotalPrice() {
+        txtViewTotalPrice.setText(Cart.getInstance().getTotalPrice()+"");
+    }
+
+    public void checkoutItems(View view) {
+        Cart.getInstance().clear();
+        recyclerViewCartItems.getAdapter().notifyDataSetChanged();
+        txtViewTotalPrice.setText("0.0");
+    }
+
+    public void clearCart(View view) {
+        Cart.getInstance().reset();
+        recyclerViewCartItems.getAdapter().notifyDataSetChanged();
+        txtViewTotalPrice.setText("0.0");
+    }
+
+    public void backToPrevActivity(View view) {
+        finish();
     }
 
 }

@@ -1,15 +1,14 @@
 package com.example.accessotech.model;
 
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
 public class Cart {
 
     private static Cart instance;
 
     private final List<CartItem> cartItems;
+    private float totalPrice;
 
     private Cart() {
         cartItems = new ArrayList<>();
@@ -21,30 +20,58 @@ public class Cart {
         return instance;
     }
 
-    public List<CartItem> getCartItems() {
-        return cartItems;
-    }
-
-    public boolean addItem(Item item) {
+    public void addItem(Item item) {
         CartItem cartItem = new CartItem(item, 1);
-        return !cartItems.contains(cartItem) && cartItems.add(cartItem);
+        cartItems.add(cartItem);
+        updateTotalPrice();
     }
 
-    public boolean removeItem(Item item) {
+    public void removeItem(Item item) {
         CartItem cartItem = new CartItem(item, 0);
-        return cartItems.remove(cartItem);
+        cartItems.remove(cartItem);
+        updateTotalPrice();
     }
 
     public boolean hasItem(Item item) {
         return cartItems.contains(new CartItem(item, 0));
     }
 
-    public boolean incrementQuantity(CartItem cartItem) {
-        return cartItem.incrementQuantityInCart();
+    public void clear() {
+        cartItems.clear();
+        totalPrice = 0f;
     }
 
-    public boolean decrementQuantity(CartItem cartItem) {
-        return cartItem.decrementQuantityInCart();
+    public void reset() {
+        cartItems.clear();
+        // TODO: reset item quantity in stock
+        totalPrice = 0f;
     }
 
+    public void incrementQuantity(CartItem cartItem) {
+        cartItem.incrementQuantityInCart();
+        updateTotalPrice();
+    }
+
+    public void decrementQuantity(CartItem cartItem) {
+        cartItem.decrementQuantityInCart();
+        updateTotalPrice();
+    }
+
+    public boolean isEmpty() {
+        return cartItems.isEmpty();
+    }
+
+    private void updateTotalPrice() {
+        totalPrice = 0f;
+        for (CartItem cartItem : cartItems)
+            totalPrice += cartItem.getQuantityInCart() * cartItem.getItem().getUnitPrice();
+    }
+
+    public List<CartItem> getCartItems() {
+        return cartItems;
+    }
+
+    public float getTotalPrice() {
+        return totalPrice;
+    }
 }

@@ -13,6 +13,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.accessotech.R;
+import com.example.accessotech.activity.CartActivity;
 import com.example.accessotech.model.Cart;
 import com.example.accessotech.model.CartItem;
 import com.example.accessotech.util.AlertManager;
@@ -58,18 +59,19 @@ public class CartItemAdapter extends RecyclerView.Adapter<CartItemAdapter.ItemVi
                     () -> {
                         Cart.getInstance().removeItem(cartItem.getItem());
                         notifyDataSetChanged();
+                        ((CartActivity) context).updateTextViewTotalPrice();
                     }
             );
         });
         holder.btnIncrementQuantity.setOnClickListener(v -> {
-            boolean incremented = Cart.getInstance().incrementQuantity(cartItem);
+            Cart.getInstance().incrementQuantity(cartItem);
             holder.txtViewItemQuantity.setText(cartItem.getQuantityInCart());
-//            if (!incremented)
-//                Toast.makeText(context, "You can't add more", Toast.LENGTH_SHORT).show();
+            ((CartActivity) context).updateTextViewTotalPrice();
         });
         holder.btnDecrementQuantity.setOnClickListener(v -> {
             Cart.getInstance().decrementQuantity(cartItem);
             holder.txtViewItemQuantity.setText(cartItem.getQuantityInCart());
+            ((CartActivity) context).updateTextViewTotalPrice();
         });
     }
 
