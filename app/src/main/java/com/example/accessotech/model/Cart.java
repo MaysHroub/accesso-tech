@@ -1,15 +1,18 @@
 package com.example.accessotech.model;
 
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 public class Cart {
 
     private static Cart instance;
-    private final Set<CartItem> cartItems;
+
+    private final List<CartItem> cartItems;
 
     private Cart() {
-        cartItems = new HashSet<>();
+        cartItems = new ArrayList<>();
     }
 
     public static Cart getInstance() {
@@ -18,9 +21,13 @@ public class Cart {
         return instance;
     }
 
+    public List<CartItem> getCartItems() {
+        return cartItems;
+    }
+
     public boolean addItem(Item item) {
         CartItem cartItem = new CartItem(item, 1);
-        return cartItems.add(cartItem);
+        return !cartItems.contains(cartItem) && cartItems.add(cartItem);
     }
 
     public boolean removeItem(Item item) {
