@@ -44,7 +44,7 @@ public class CartItemAdapter extends RecyclerView.Adapter<CartItemAdapter.ItemVi
         holder.txtViewItemName.setText(cartItem.getItem().getName());
         // TODO: replace it with discounted price
         holder.txtViewItemPrice.setText(cartItem.getItem().getUnitPrice()+"");
-        holder.txtViewItemQuantity.setText(cartItem.getQuantityInCart());
+        holder.txtViewItemQuantity.setText(cartItem.getQuantityInCart()+"");
         // TODO: connect imgItem with item resource id image
 
         addButtonClickListeners(holder, cartItem);
@@ -65,12 +65,12 @@ public class CartItemAdapter extends RecyclerView.Adapter<CartItemAdapter.ItemVi
         });
         holder.btnIncrementQuantity.setOnClickListener(v -> {
             Cart.getInstance().incrementQuantity(cartItem);
-            holder.txtViewItemQuantity.setText(cartItem.getQuantityInCart());
+            holder.txtViewItemQuantity.setText(cartItem.getQuantityInCart()+"");
             ((CartActivity) context).updateTextViewTotalPrice();
         });
         holder.btnDecrementQuantity.setOnClickListener(v -> {
             Cart.getInstance().decrementQuantity(cartItem);
-            holder.txtViewItemQuantity.setText(cartItem.getQuantityInCart());
+            holder.txtViewItemQuantity.setText(cartItem.getQuantityInCart()+"");
             ((CartActivity) context).updateTextViewTotalPrice();
         });
     }
