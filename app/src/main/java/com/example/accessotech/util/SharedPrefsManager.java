@@ -1,9 +1,11 @@
 package com.example.accessotech.util;
 
+import static android.content.ContentValues.TAG;
 import static android.content.Context.MODE_PRIVATE;
 
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.util.Log;
 
 import com.example.accessotech.model.CartItem;
 import com.example.accessotech.model.Item;
@@ -20,6 +22,8 @@ public class SharedPrefsManager {
         SharedPreferences.Editor editor = prefs.edit();
         Gson gson = new Gson();
         String json = gson.toJson(cartItems);
+        Log.d("cart", "saveCartItems: " + cartItems.toString());
+        Log.d("cart", "saveCartItems json: " + json);
         editor.putString(PrefsKeys.CART.getKey(), json);
         editor.putBoolean(PrefsKeys.CART_SAVED.getKey(), true);
         editor.apply();
@@ -30,11 +34,14 @@ public class SharedPrefsManager {
         Gson gson = new Gson();
         String json = prefs.getString(PrefsKeys.CART.getKey(), "");
         Type type = new TypeToken<List<CartItem>>() {}.getType();
+        Log.d("cart", "loadCartItems json: " + json);
+        Log.d("cart", "loadCartItems: " + gson.fromJson(json, type).toString());
         return gson.fromJson(json, type);
     }
 
     public static boolean isCartPreviouslySaved(Context context) {
-        SharedPreferences prefs = context.getSharedPreferences(PrefsKeys.ITEM_DATA_SHARED_PREF.getKey(), MODE_PRIVATE);
+        SharedPreferences prefs = context.getSharedPreferences(PrefsKeys.CART_ITEMS_SHARED_PREF.getKey(), MODE_PRIVATE);
+        Log.d("cart", "isCartPreviouslySaved: " + prefs.getBoolean(PrefsKeys.CART_SAVED.getKey(), false));
         return prefs.getBoolean(PrefsKeys.CART_SAVED.getKey(), false);
     }
 

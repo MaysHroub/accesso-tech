@@ -71,7 +71,7 @@ public class CartActivity extends AppCompatActivity {
         if (cartDao.isEmpty())
             txtViewTotalPrice.setText("0.00");
         else
-            txtViewTotalPrice.setText(String.format("%0.2f", cartDao.getUpdatedTotalPrice()));
+            txtViewTotalPrice.setText(String.format("%.2f", cartDao.getUpdatedTotalPrice()));
     }
 
     public void checkoutItems(View view) {

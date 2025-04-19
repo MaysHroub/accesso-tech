@@ -18,7 +18,7 @@ public class CartDao {
         this.context = context;
         cartItems = new ArrayList<>();
         if (SharedPrefsManager.isCartPreviouslySaved(context))
-            cartItems = SharedPrefsManager.loadCartItems(context);
+            cartItems = new ArrayList<>(SharedPrefsManager.loadCartItems(context));
     }
 
     public void saveAllCartItems() {

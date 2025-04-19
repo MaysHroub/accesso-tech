@@ -4,6 +4,7 @@ import static android.view.View.GONE;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -91,6 +92,9 @@ public class ItemDetailsActivity extends AppCompatActivity {
         cartDao.addItem(item);
         btnAddToCart.setEnabled(false);
         btnAddToCart.setText(R.string.item_is_added);
+
+        Log.d("cart", "addItemToCart: " + item.getName());
+        Log.d("cart", "addItemToCart: " + cartDao.hasItem(item));
     }
 
     public void backToPreviousActivity(View view) {
