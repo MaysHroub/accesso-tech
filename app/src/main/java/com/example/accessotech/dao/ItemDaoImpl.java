@@ -6,6 +6,7 @@ import com.example.accessotech.model.Item;
 import com.example.accessotech.util.DataLoader;
 import com.example.accessotech.util.SharedPrefsManager;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class ItemDaoImpl implements ItemDao {
@@ -17,14 +18,14 @@ public class ItemDaoImpl implements ItemDao {
     public ItemDaoImpl(Context context) {
         this.context = context;
         DataLoader dataLoader = new DataLoader();
-        categories = dataLoader.loadCategories();
-        manufacturers = dataLoader.loadManufacturers();
-        ratings = dataLoader.loadRatings();
+        categories = new ArrayList<>(dataLoader.loadCategories());
+        manufacturers = new ArrayList<>(dataLoader.loadManufacturers());
+        ratings = new ArrayList<>(dataLoader.loadRatings());
 
         if (SharedPrefsManager.isDataPreviouslySaved(context))
-            items = SharedPrefsManager.loadAppData(context);
+            items = new ArrayList<>(SharedPrefsManager.loadAppData(context));
         else {
-            items = dataLoader.loadItems();
+            items = new ArrayList<>(dataLoader.loadItems());
             SharedPrefsManager.saveAppData(context, items);
         }
     }
