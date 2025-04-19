@@ -52,4 +52,22 @@ public class UserProfileActivity extends AppCompatActivity {
         startActivity(intent);
         finish();
     }
+
+    public void navigateToHomeActivity(View view) {
+        Intent intent = new Intent(this, HomeActivity.class);
+        startActivity(intent);
+        finish();
+    }
+
+    public void navigateToSearchActivity(View view) {
+        Intent intent = new Intent(this, SearchActivity.class);
+        startActivity(intent);
+        finish();
+    }
+
+    public void navigateToCartActivity(View view) {
+        Intent intent = new Intent(this, CartActivity.class);
+        startActivity(intent);
+        finish();
+    }
 }

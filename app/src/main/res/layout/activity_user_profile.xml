@@ -152,7 +152,6 @@
             android:id="@+id/navbar"
             android:layout_width="match_parent"
             android:layout_height="48dp"
-            android:onClick="navigateToProfileActivity"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent">
@@ -164,6 +163,7 @@
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:background="#00FFFFFF"
+                android:onClick="navigateToHomeActivity"
                 app:srcCompat="@drawable/home_line" />
 
             <ImageButton
@@ -190,7 +190,6 @@
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:background="#00FFFFFF"
-                android:onClick="navigateToProfileActivity"
                 app:srcCompat="@drawable/user_filled" />
 
         </androidx.appcompat.widget.LinearLayoutCompat>
