@@ -109,6 +109,7 @@
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:background="#00FFFFFF"
+                android:onClick="navigateToHomeActivity"
                 app:srcCompat="@drawable/home_line" />
 
             <ImageButton
@@ -117,6 +118,7 @@
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:background="#00FFFFFF"
+                android:onClick="navigateToSearchActivity"
                 app:srcCompat="@drawable/search_line" />
 
             <ImageButton
@@ -133,6 +135,7 @@
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:background="#00FFFFFF"
+                android:onClick="navigateToProfileActivity"
                 app:srcCompat="@drawable/user_line" />
 
         </androidx.appcompat.widget.LinearLayoutCompat>

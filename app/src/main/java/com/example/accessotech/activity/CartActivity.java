@@ -1,5 +1,6 @@
 package com.example.accessotech.activity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -94,5 +95,24 @@ public class CartActivity extends AppCompatActivity {
         super.onStop();
         cartDao.saveAllCartItems();
     }
+
+    public void navigateToHomeActivity(View view) {
+        Intent intent = new Intent(this, HomeActivity.class);
+        startActivity(intent);
+        finish();
+    }
+
+    public void navigateToSearchActivity(View view) {
+        Intent intent = new Intent(this, SearchActivity.class);
+        startActivity(intent);
+        finish();
+    }
+
+    public void navigateToProfileActivity(View view) {
+        Intent intent = new Intent(this, UserProfileActivity.class);
+        startActivity(intent);
+        finish();
+    }
+
 }
 
