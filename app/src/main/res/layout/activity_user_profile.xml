@@ -21,7 +21,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/chatgpt_image_apr_19__2025__01_38_31_am" />
+            app:srcCompat="@drawable/user_photo" />
 
         <TextView
             android:id="@+id/textView8"

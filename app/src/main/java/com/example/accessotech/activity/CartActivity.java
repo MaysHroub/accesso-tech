@@ -1,5 +1,7 @@
 package com.example.accessotech.activity;
 
+import static android.view.View.VISIBLE;
+
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -49,9 +51,12 @@ public class CartActivity extends AppCompatActivity {
     private void setUpViews() {
         txtViewTotalPrice = findViewById(R.id.txtViewTotalPrice);
         recyclerViewCartItems = findViewById(R.id.recyclerViewCartItems);
+        TextView txtViewEmptyCart = findViewById(R.id.txtViewEmptyCart);
         Button btnCheckout = findViewById(R.id.btnCheckout);
-        if (cartDao.isEmpty())
+        if (cartDao.isEmpty()) {
             btnCheckout.setEnabled(false);
+            txtViewEmptyCart.setVisibility(VISIBLE);
+        }
         updateTextViewTotalPrice();
     }
 
@@ -79,14 +84,14 @@ public class CartActivity extends AppCompatActivity {
         cartDao.clear();
 
         recyclerViewCartItems.getAdapter().notifyDataSetChanged();
-        txtViewTotalPrice.setText("0.0");
+        txtViewTotalPrice.setText("0.00");
         Toast.makeText(this, "Checkout successful! Thank you for your purchase", Toast.LENGTH_SHORT).show();
     }
 
     public void clearCart(View view) {
         cartDao.clear();
         recyclerViewCartItems.getAdapter().notifyDataSetChanged();
-        txtViewTotalPrice.setText("0.0");
+        txtViewTotalPrice.setText("0.00");
     }
 
     @Override

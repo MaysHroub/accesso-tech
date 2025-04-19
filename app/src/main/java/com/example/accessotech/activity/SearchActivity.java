@@ -1,5 +1,6 @@
 package com.example.accessotech.activity;
 
+import static android.view.View.GONE;
 import static android.view.View.VISIBLE;
 
 import android.content.Intent;
@@ -8,6 +9,7 @@ import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.TextView;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -31,6 +33,7 @@ public class SearchActivity extends AppCompatActivity {
 
     private EditText edtTxtSearch, edtTxtFrom, edtTxtTo;
     private Spinner spnrCategory, spnrManufacturer, spnrRating;
+    private TextView txtViewNoResults;
     private RecyclerView recyclerViewFilteredItems;
     private LinearLayoutCompat filterLayout;
     private FilteredItemAdapter adapter;
@@ -54,6 +57,7 @@ public class SearchActivity extends AppCompatActivity {
     }
 
     private void setUpViews() {
+        txtViewNoResults = findViewById(R.id.txtViewNoResults);
         edtTxtSearch = findViewById(R.id.edtTxtSearch);
         edtTxtFrom = findViewById(R.id.edtTxtFromPrice);
         edtTxtTo = findViewById(R.id.edtTxtToPrice);
@@ -111,6 +115,11 @@ public class SearchActivity extends AppCompatActivity {
         );
 
         adapter.filter(edtTxtSearch.getText().toString(), itemFilter);
+
+        if (adapter.getItemCount() == 0)
+            txtViewNoResults.setVisibility(VISIBLE);
+        else
+            txtViewNoResults.setVisibility(GONE);
     }
 
     public void navigateToHomeActivity(View view) {
