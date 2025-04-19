@@ -2,7 +2,7 @@
 
 AccessoTech is an Android mobile app that lets users browse and shop for tech accessories — like earbuds, chargers, smartwatches, and more. Users can create an account, filter and explore products, add items to their cart, and check out with ease.
 
-The application demonstrates key concepts such as implementing dynamic lists with RecyclerView and custom adapters, saving data using SharedPreferences, navigating between activities, and building a simple cart and checkout system.
+The application demonstrates key concepts such as implementing dynamic lists with `RecyclerView` and custom adapters, saving data using `SharedPreferences`, navigating between activities, and building a simple cart and checkout system.
 
 It was developed in Android Studio using Java.
 
@@ -27,6 +27,9 @@ It was developed in Android Studio using Java.
   <img src="https://github.com/user-attachments/assets/5f1246d1-4f99-402a-b844-05fbab68ab82" alt="cart" width="200" style="margin-right: 20px;"/>
   <img src="https://github.com/user-attachments/assets/aff9d444-b47c-43c3-800b-393edb8ba569" alt="profile" width="200"/>
 </p>
+
+
+Note: Screenshots were taken on Google Pixel 9 with resolution of `1080 x 2424 px` and size of `6.24"`
 
 
 ## Demo Video
