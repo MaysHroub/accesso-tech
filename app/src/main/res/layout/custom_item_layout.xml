@@ -4,15 +4,14 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/ItemLayout"
-    app:cardCornerRadius="24dp"
+    app:cardCornerRadius="32dp"
     android:layout_marginBottom="16dp"
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:paddingBottom="12dp">
+        android:layout_height="match_parent">
 
         <ImageView
             android:id="@+id/imgItem"
@@ -28,7 +27,7 @@
 
         <TextView
             android:id="@+id/txtViewItemName"
-            style="@style/medium_coloured_text"
+            style="@style/regular_dark_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
@@ -38,35 +37,33 @@
 
         <TextView
             android:id="@+id/txtViewItemRating"
-            style="@style/small_bold_grey_text"
+            style="@style/regular_grey_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
             android:drawablePadding="5dp"
             android:text="5.0"
-            app:layout_constraintBottom_toBottomOf="@+id/textView18"
-            app:layout_constraintStart_toEndOf="@+id/textView18"
-            app:layout_constraintTop_toTopOf="@+id/textView18" />
+            app:layout_constraintStart_toEndOf="@+id/imageView4"
+            app:layout_constraintTop_toTopOf="@+id/imageView4" />
 
         <TextView
             android:id="@+id/txtViewItemPrice"
-            style="@style/small_bold_grey_text"
+            style="@style/regular_dark_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="1099.9"
-            app:layout_constraintBottom_toBottomOf="@+id/textView15"
+            app:layout_constraintBottom_toBottomOf="@+id/textView17"
             app:layout_constraintStart_toEndOf="@+id/textView17"
-            app:layout_constraintTop_toTopOf="@+id/textView15"
-            app:layout_constraintVertical_bias="0.0" />
+            app:layout_constraintTop_toTopOf="@+id/textView17" />
 
         <TextView
             android:id="@+id/txtViewItemDiscount"
-            style="@style/small_white_text"
+            style="@style/regular_white_text"
             android:layout_width="200dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="24dp"
             android:layout_marginEnd="-64dp"
-            android:background="#E86F74"
+            android:background="@color/pinky"
             android:rotation="45"
             android:text="50% OFF"
             android:textAlignment="center"
@@ -74,24 +71,13 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/textView15"
-            style="@style/small_coloured_text"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="4dp"
-            android:text="@string/price"
-            app:layout_constraintStart_toStartOf="@+id/textView18"
-            app:layout_constraintTop_toBottomOf="@+id/txtViewItemRating" />
-
-        <TextView
             android:id="@+id/textView16"
             style="@style/small_grey_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
             android:text="@string/quantity_in_stock"
-            app:layout_constraintStart_toStartOf="@+id/textView18"
-            app:layout_constraintTop_toBottomOf="@+id/textView15" />
+            app:layout_constraintStart_toStartOf="@+id/imageView4"
+            app:layout_constraintTop_toBottomOf="@+id/txtViewItemRating" />
 
         <TextView
             android:id="@+id/txtViewItemQuantityInStock"
@@ -105,35 +91,22 @@
             app:layout_constraintTop_toTopOf="@+id/textView16" />
 
         <TextView
-            android:id="@+id/textView18"
-            style="@style/small_coloured_text"
+            android:id="@+id/textView17"
+            style="@style/regular_dark_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
-            android:text="Rating:"
-            app:layout_constraintStart_toStartOf="@+id/txtViewItemName"
-            app:layout_constraintTop_toBottomOf="@+id/txtViewItemName" />
-
-        <TextView
-            android:id="@+id/textView17"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
             android:text="$"
-            style="@style/small_bold_grey_text"
-            app:layout_constraintBottom_toBottomOf="@+id/textView15"
-            app:layout_constraintStart_toEndOf="@+id/textView15"
-            app:layout_constraintTop_toTopOf="@+id/textView15" />
+            app:layout_constraintStart_toStartOf="@+id/textView16"
+            app:layout_constraintTop_toBottomOf="@+id/textView16" />
 
-        <TextView
-            android:id="@+id/textView19"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="4dp"
-            android:text="⭐"
-            app:layout_constraintBottom_toBottomOf="@+id/txtViewItemRating"
-            app:layout_constraintStart_toEndOf="@+id/txtViewItemRating"
-            app:layout_constraintTop_toTopOf="@+id/txtViewItemRating" />
+        <ImageView
+            android:id="@+id/imageView4"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            app:layout_constraintStart_toStartOf="@+id/txtViewItemName"
+            app:layout_constraintTop_toBottomOf="@+id/txtViewItemName"
+            app:srcCompat="@drawable/star_filled" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

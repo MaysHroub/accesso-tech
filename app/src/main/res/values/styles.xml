@@ -1,116 +1,101 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <style name="large_coloured_text">
+    <style name="dark_text">
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
-        <item name="android:textColor">#3A8CB7</item>
+        <item name="android:textColor">@color/very_dark_grey</item>
         <item name="android:textStyle">bold</item>
-        <item name="android:fontFamily">sans-serif</item>
+        <item name="android:fontFamily">@font/poppins_semibold</item>
+    </style>
+
+    <style name="grey_text">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textColor">@color/grey</item>
+        <item name="android:fontFamily">@font/poppins</item>
+    </style>
+
+    <style name="white_text">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:fontFamily">@font/poppins_semibold</item>
+    </style>
+
+    <style name="extra_large_dark_text" parent="dark_text">
+        <item name="android:textSize">50sp</item>
+    </style>
+
+    <style name="extra_large_white_text" parent="white_text">
+        <item name="android:textSize">50sp</item>
+    </style>
+
+    <style name="large_dark_text" parent="dark_text">
         <item name="android:textSize">24sp</item>
     </style>
 
-    <style name="medium_coloured_text">
-        <item name="android:layout_width">wrap_content</item>
-        <item name="android:layout_height">wrap_content</item>
-        <item name="android:textColor">#3A8CB7</item>
-        <item name="android:textStyle">bold</item>
-        <item name="android:fontFamily">sans-serif</item>
-        <item name="android:textSize">18sp</item>
-    </style>
-
-    <style name="medium_black_text">
-        <item name="android:layout_width">wrap_content</item>
-        <item name="android:layout_height">wrap_content</item>
-        <item name="android:textColor">@color/black</item>
-        <item name="android:textStyle">bold</item>
-        <item name="android:fontFamily">sans-serif</item>
-        <item name="android:textSize">18sp</item>
-    </style>
-
-    <style name="large_black_text">
-        <item name="android:layout_width">wrap_content</item>
-        <item name="android:layout_height">wrap_content</item>
-        <item name="android:textColor">@color/black</item>
-        <item name="android:textStyle">bold</item>
-        <item name="android:fontFamily">sans-serif</item>
+    <style name="large_grey_text" parent="grey_text">
         <item name="android:textSize">24sp</item>
     </style>
 
-    <style name="small_white_text">
-        <item name="android:layout_width">wrap_content</item>
-        <item name="android:layout_height">wrap_content</item>
-        <item name="android:textColor">@color/white</item>
-        <item name="android:textStyle">bold</item>
-        <item name="android:fontFamily">sans-serif</item>
+    <style name="large_white_text" parent="white_text">
+        <item name="android:textSize">24sp</item>
+    </style>
+
+    <style name="medium_dark_text" parent="dark_text">
+        <item name="android:textSize">20sp</item>
+    </style>
+
+    <style name="regular_dark_text" parent="dark_text">
+        <item name="android:textSize">16sp</item>
+        <item name="android:fontFamily">@font/poppins</item>
+    </style>
+
+    <style name="regular_grey_text" parent="grey_text">
         <item name="android:textSize">16sp</item>
     </style>
 
-    <style name="small_grey_text">
-        <item name="android:layout_width">wrap_content</item>
-        <item name="android:layout_height">wrap_content</item>
-        <item name="android:textColor">#6F6F6F</item>
-        <item name="android:fontFamily">sans-serif</item>
+    <style name="regular_white_text" parent="white_text">
         <item name="android:textSize">16sp</item>
     </style>
 
-    <style name="small_bold_grey_text">
-        <item name="android:layout_width">wrap_content</item>
-        <item name="android:layout_height">wrap_content</item>
-        <item name="android:textColor">#6F6F6F</item>
-        <item name="android:fontFamily">sans-serif</item>
-        <item name="android:textSize">16sp</item>
-        <item name="android:textStyle">bold</item>
+    <style name="small_grey_text" parent="grey_text">
+        <item name="android:textSize">12sp</item>
     </style>
 
-    <style name="small_coloured_text">
-        <item name="android:layout_width">wrap_content</item>
-        <item name="android:layout_height">wrap_content</item>
-        <item name="android:textColor">#3A8CB7</item>
-        <item name="android:fontFamily">sans-serif</item>
-        <item name="android:textSize">16sp</item>
-        <item name="android:textStyle">bold</item>
-    </style>
-
-    <style name="large_white_text">
-        <item name="android:layout_width">match_parent</item>
-        <item name="android:layout_height">match_parent</item>
-        <item name="android:textSize">32sp</item>
-        <item name="android:textColor">@color/white</item>
-        <item name="android:fontFamily">sans-serif</item>
-        <item name="android:textStyle">bold</item>
-    </style>
-
-    <style name="extra_large_white_text">
-        <item name="android:layout_width">match_parent</item>
-        <item name="android:layout_height">match_parent</item>
-        <item name="android:textSize">64sp</item>
-        <item name="android:textColor">@color/white</item>
-        <item name="android:fontFamily">sans-serif</item>
-        <item name="android:textStyle">bold</item>
-    </style>
 
     <style name="white_button">
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:backgroundTint">@color/white</item>
-        <item name="android:fontFamily">sans-serif</item>
+        <item name="android:fontFamily">@font/poppins_semibold</item>
         <item name="android:textStyle">bold</item>
         <item name="android:textColor">#2c6e91</item>
     </style>
 
     <style name="coloured_button">
-        <item name="android:textSize">18sp</item>
+        <item name="android:textSize">16sp</item>
         <item name="android:paddingTop">12dp</item>
         <item name="android:paddingBottom">12dp</item>
-        <item name="android:paddingRight">32dp</item>
-        <item name="android:paddingLeft">32dp</item>
-        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
-        <item name="android:backgroundTint">@color/dark_green_blue</item>
-        <item name="android:fontFamily">sans-serif</item>
+        <item name="android:backgroundTint">@color/dark_grey</item>
+        <item name="android:fontFamily">@font/poppins</item>
         <item name="android:textStyle">bold</item>
         <item name="android:textColor">@color/white</item>
+    </style>
+
+    <style name="edit_text">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:background">@drawable/rounded_light_grey_background</item>
+        <item name="android:fontFamily">@font/poppins</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:drawablePadding">12dp</item>
+        <item name="android:maxLength">32</item>
+        <item name="android:maxLines">1</item>
     </style>
 
 </resources>

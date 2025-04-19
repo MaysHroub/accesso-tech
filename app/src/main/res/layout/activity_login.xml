@@ -5,77 +5,56 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/dark_green_blue"
+    android:background="@color/white"
     tools:context=".activity.LoginActivity">
 
-    <TextView
-        android:id="@+id/textView5"
-        style="@style/extra_large_white_text"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="44dp"
-        android:lineSpacingExtra="-10dp"
-        android:text="@string/welcome_back"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginTop="44dp"
-        android:background="@drawable/rounded_white_background"
-        android:paddingLeft="30dp"
-        android:paddingRight="30dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView5">
+        android:layout_margin="@dimen/layout_inner_padding"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
         <Button
             android:id="@+id/btnLogin"
             style="@style/coloured_button"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="20dp"
-            android:layout_marginRight="20dp"
+            android:layout_marginTop="64dp"
             android:onClick="login"
             android:text="@string/login"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/edtTxtPasswordLogin" />
 
         <EditText
             android:id="@+id/edtTxtUsernameLogin"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_marginTop="64dp"
-            android:background="@drawable/rounded_edittext_background"
-            android:ems="10"
+            android:layout_marginTop="32dp"
+            android:drawableStart="@drawable/baseline_person_24"
             android:hint="@string/username"
             android:inputType="textEmailAddress"
-            android:maxLines="1"
-            android:maxLength="32"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toBottomOf="@+id/textView5"
+            style="@style/edit_text" />
 
         <EditText
             android:id="@+id/edtTxtPasswordLogin"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_marginTop="32dp"
-            android:background="@drawable/rounded_edittext_background"
-            android:ems="10"
+            android:layout_marginTop="24dp"
+            android:drawableStart="@drawable/baseline_lock_24"
             android:hint="@string/password"
             android:inputType="textPassword"
-            android:maxLines="1"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/edtTxtUsernameLogin" />
+            app:layout_constraintTop_toBottomOf="@+id/edtTxtUsernameLogin"
+            style="@style/edit_text" />
 
-
+        <TextView
+            android:id="@+id/textView5"
+            style="@style/extra_large_dark_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="128dp"
+            android:text="@string/login_to_your_account"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 

@@ -3,147 +3,196 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
-    android:padding="20dp"
+    android:background="@color/white"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".activity.SearchActivity">
 
-    <androidx.appcompat.widget.LinearLayoutCompat
-        android:id="@+id/linearLayoutCompat2"
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_margin="@dimen/layout_inner_padding"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-        <ImageView
-            android:id="@+id/imgBack"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:layout_gravity="center"
-            android:onClick="navigateBackToHomeActivity"
-            app:srcCompat="@drawable/baseline_arrow_back_ios_new_24" />
-
         <EditText
             android:id="@+id/edtTxtSearch"
-            android:layout_width="match_parent"
-            android:layout_height="48dp"
-            android:layout_marginStart="30dp"
-            android:layout_marginEnd="20dp"
-            android:background="@drawable/rounded_edittext_background"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:background="@drawable/rounded_light_grey_background"
             android:ems="10"
-            android:hint="@string/search"
+            android:hint="@string/enter_item_name"
             android:inputType="text"
-            android:textAlignment="center" />
+            android:textAlignment="center"
+            app:layout_constraintEnd_toStartOf="@+id/btnShowFilter"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-    </androidx.appcompat.widget.LinearLayoutCompat>
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:id="@+id/linearLayoutCompat2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:orientation="vertical"
+            android:visibility="gone"
+            app:layout_constraintTop_toBottomOf="@+id/edtTxtSearch"
+            tools:layout_editor_absoluteX="16dp">
 
-    <androidx.appcompat.widget.LinearLayoutCompat
-        android:id="@+id/linearLayoutCompat3"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView">
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:id="@+id/linearLayoutCompat3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                tools:layout_editor_absoluteX="35dp"
+                tools:layout_editor_absoluteY="470dp">
 
-        <Spinner
-            android:id="@+id/spinnerCategory"
+                <Spinner
+                    android:id="@+id/spinnerCategory"
+                    style="@style/regular_grey_text"
+                    android:layout_width="0dp"
+                    android:layout_height="48dp"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_weight="1" />
+
+                <Spinner
+                    android:id="@+id/spinnerCompany"
+                    android:layout_width="0dp"
+                    android:layout_height="48dp"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_weight="1" />
+
+                <Spinner
+                    android:id="@+id/spinnerRating"
+                    android:layout_width="0dp"
+                    android:layout_height="48dp"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_weight="1" />
+
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:id="@+id/linearLayoutCompat4"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                tools:layout_editor_absoluteX="16dp"
+                tools:layout_editor_absoluteY="261dp">
+
+                <TextView
+                    android:id="@+id/textView2"
+                    style="@style/regular_grey_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:text="@string/price_range" />
+
+                <EditText
+                    android:id="@+id/edtTxtFromPrice"
+                    android:layout_width="0dp"
+                    android:layout_height="48dp"
+                    android:layout_marginStart="20dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/rounded_light_grey_background"
+                    android:hint="@string/from"
+                    android:inputType="numberDecimal"
+                    android:padding="5dp"
+                    android:textAlignment="center" />
+
+                <EditText
+                    android:id="@+id/edtTxtToPrice"
+                    android:layout_width="0dp"
+                    android:layout_height="48dp"
+                    android:layout_marginStart="20dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/rounded_light_grey_background"
+                    android:hint="@string/to"
+                    android:inputType="numberDecimal"
+                    android:padding="5dp"
+                    android:textAlignment="center" />
+
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerViewFilteredItems"
             android:layout_width="0dp"
-            android:layout_height="48dp"
-            android:layout_gravity="center_horizontal"
-            android:layout_weight="1" />
+            android:layout_height="0dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="8dp"
+            app:layout_constraintBottom_toTopOf="@+id/navbar"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/btnItemSearch" />
 
-        <Spinner
-            android:id="@+id/spinnerCompany"
+        <Button
+            android:id="@+id/btnItemSearch"
+            style="@style/coloured_button"
             android:layout_width="0dp"
-            android:layout_height="48dp"
-            android:layout_gravity="center_horizontal"
-            android:layout_weight="1" />
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:onClick="searchForItemAndUpdateRecyclerView"
+            android:text="@string/apply_and_search"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/linearLayoutCompat2" />
 
-        <Spinner
-            android:id="@+id/spinnerRating"
-            android:layout_width="0dp"
-            android:layout_height="48dp"
-            android:layout_gravity="center_horizontal"
-            android:layout_weight="1" />
-
-    </androidx.appcompat.widget.LinearLayoutCompat>
-
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/apply_filter"
-        style="@style/medium_coloured_text"
-        android:layout_marginTop="30dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayoutCompat2" />
-
-    <androidx.appcompat.widget.LinearLayoutCompat
-        android:id="@+id/linearLayoutCompat4"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-
-        android:layout_marginTop="30dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayoutCompat3">
-
-        <TextView
-            android:id="@+id/textView2"
-            style="@style/medium_coloured_text"
+        <ImageButton
+            android:id="@+id/btnShowFilter"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:text="@string/price_range" />
+            android:background="@color/white"
+            app:layout_constraintBottom_toBottomOf="@+id/edtTxtSearch"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/edtTxtSearch"
+            app:srcCompat="@drawable/filter_line" />
 
-        <EditText
-            android:id="@+id/edtTxtFromPrice"
-            android:inputType="numberDecimal"
-            android:layout_width="0dp"
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:id="@+id/navbar"
+            android:layout_width="match_parent"
             android:layout_height="48dp"
-            android:layout_marginStart="20dp"
-            android:layout_weight="1"
-            android:background="@drawable/rounded_edittext_background"
-            android:hint="@string/from"
-            android:padding="5dp"
-            android:textAlignment="center" />
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent">
 
-        <EditText
-            android:id="@+id/edtTxtToPrice"
-            android:inputType="numberDecimal"
-            android:layout_width="0dp"
-            android:layout_height="48dp"
-            android:layout_marginStart="20dp"
-            android:layout_weight="1"
-            android:background="@drawable/rounded_edittext_background"
-            android:hint="@string/to"
-            android:padding="5dp"
-            android:textAlignment="center" />
 
-    </androidx.appcompat.widget.LinearLayoutCompat>
+            <ImageButton
+                android:id="@+id/btnHome"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="#00FFFFFF"
+                app:srcCompat="@drawable/home_line" />
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerViewFilteredItems"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginTop="16dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnItemSearch" />
+            <ImageButton
+                android:id="@+id/btnSearch"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="#00FFFFFF"
+                app:srcCompat="@drawable/search_filled" />
 
-    <Button
-        android:id="@+id/btnItemSearch"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:onClick="searchForItemAndUpdateRecyclerView"
-        android:text="Search"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayoutCompat4" />
+            <ImageButton
+                android:id="@+id/btnCart"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="#00FFFFFF"
+                app:srcCompat="@drawable/cart_line" />
 
+            <ImageButton
+                android:id="@+id/btnProfile"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="#00FFFFFF"
+                app:srcCompat="@drawable/user_line" />
+
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

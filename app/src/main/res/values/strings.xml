@@ -71,4 +71,11 @@
     <string name="create_account">Create account</string>
     <string name="price">Price:</string>
     <string name="item_is_added">Item is added</string>
+    <string name="login_to_your_account">Login to your Account</string>
+    <string name="create_your_account">Create your Account</string>
+    <string name="hello">Hello 👋</string>
+    <string name="check_out_the_latest_updates_and_explore_something_new_today">Check out the latest updates and explore something new today!</string>
+    <string name="apply_and_search">Apply and Search</string>
+    <string name="enter_item_name">Enter Item Name</string>
+    <string name="description">Description</string>
 </resources>
