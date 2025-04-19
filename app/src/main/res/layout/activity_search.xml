@@ -33,7 +33,7 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <androidx.appcompat.widget.LinearLayoutCompat
-            android:id="@+id/linearLayoutCompat2"
+            android:id="@+id/filterLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
@@ -138,13 +138,14 @@
             android:text="@string/apply_and_search"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/linearLayoutCompat2" />
+            app:layout_constraintTop_toBottomOf="@+id/filterLayout" />
 
         <ImageButton
             android:id="@+id/btnShowFilter"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="@color/white"
+            android:onClick="showFilterOptions"
             app:layout_constraintBottom_toBottomOf="@+id/edtTxtSearch"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="@+id/edtTxtSearch"
@@ -165,6 +166,7 @@
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:background="#00FFFFFF"
+                android:onClick="navigateToHomeActivity"
                 app:srcCompat="@drawable/home_line" />
 
             <ImageButton
@@ -181,6 +183,7 @@
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:background="#00FFFFFF"
+                android:onClick="navigateToCartActivity"
                 app:srcCompat="@drawable/cart_line" />
 
             <ImageButton
@@ -189,6 +192,7 @@
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:background="#00FFFFFF"
+                android:onClick="navigateToProfileActivity"
                 app:srcCompat="@drawable/user_line" />
 
         </androidx.appcompat.widget.LinearLayoutCompat>

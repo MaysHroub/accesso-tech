@@ -1,5 +1,8 @@
 package com.example.accessotech.activity;
 
+import static android.view.View.VISIBLE;
+
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
@@ -8,6 +11,7 @@ import android.widget.Spinner;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.LinearLayoutCompat;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
@@ -28,6 +32,7 @@ public class SearchActivity extends AppCompatActivity {
     private EditText edtTxtSearch, edtTxtFrom, edtTxtTo;
     private Spinner spnrCategory, spnrManufacturer, spnrRating;
     private RecyclerView recyclerViewFilteredItems;
+    private LinearLayoutCompat filterLayout;
     private FilteredItemAdapter adapter;
     private ItemDao itemDao;
 
@@ -56,6 +61,7 @@ public class SearchActivity extends AppCompatActivity {
         spnrManufacturer = findViewById(R.id.spinnerCompany);
         spnrRating = findViewById(R.id.spinnerRating);
         recyclerViewFilteredItems = findViewById(R.id.recyclerViewFilteredItems);
+        filterLayout = findViewById(R.id.filterLayout);
     }
 
     private void fillViewsWithData() {
@@ -107,6 +113,27 @@ public class SearchActivity extends AppCompatActivity {
         adapter.filter(edtTxtSearch.getText().toString(), itemFilter);
     }
 
+    public void navigateToHomeActivity(View view) {
+        Intent intent = new Intent(this, HomeActivity.class);
+        startActivity(intent);
+        finish();
+    }
+
+    public void navigateToCartActivity(View view) {
+        Intent intent = new Intent(this, CartActivity.class);
+        startActivity(intent);
+        finish();
+    }
+
+    public void navigateToProfileActivity(View view) {
+        Intent intent = new Intent(this, UserProfileActivity.class);
+        startActivity(intent);
+        finish();
+    }
+
+    public void showFilterOptions(View view) {
+        filterLayout.setVisibility(VISIBLE);
+    }
 }
 
 
