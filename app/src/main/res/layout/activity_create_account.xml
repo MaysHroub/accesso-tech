@@ -19,7 +19,6 @@
             style="@style/extra_large_dark_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
             android:text="@string/create_your_account"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -90,7 +89,7 @@
         <Button
             android:id="@+id/btnCreateAccount"
             style="@style/coloured_button"
-            android:layout_marginBottom="32dp"
+            android:layout_marginBottom="16dp"
             android:onClick="createAccount"
             android:text="@string/create_account"
             app:layout_constraintBottom_toBottomOf="parent"

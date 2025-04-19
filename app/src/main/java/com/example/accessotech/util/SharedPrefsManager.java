@@ -51,7 +51,7 @@ public class SharedPrefsManager {
     public static List<Item> loadAppData(Context context) {
         SharedPreferences prefs = context.getSharedPreferences(PrefsKeys.ITEM_DATA_SHARED_PREF.getKey(), MODE_PRIVATE);
         Gson gson = new Gson();
-        String json = prefs.getString(PrefsKeys.CART.getKey(), "");
+        String json = prefs.getString(PrefsKeys.DATA.getKey(), "");
         Type type = new TypeToken<List<Item>>() {}.getType();
         return gson.fromJson(json, type);
     }
