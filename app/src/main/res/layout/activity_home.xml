@@ -41,7 +41,7 @@
                 app:layout_constraintStart_toEndOf="@+id/imgUser" />
 
             <TextView
-                android:id="@+id/textView20"
+                android:id="@+id/txtViewTotalPrice"
                 style="@style/large_grey_text"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"

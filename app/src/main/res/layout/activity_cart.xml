@@ -70,9 +70,9 @@
             android:layout_marginBottom="8dp"
             android:onClick="checkoutItems"
             android:text="@string/checkout"
-            app:layout_constraintBottom_toBottomOf="@+id/textView20"
+            app:layout_constraintBottom_toBottomOf="@+id/txtViewTotalPrice"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/textView20"
+            app:layout_constraintStart_toEndOf="@+id/txtViewTotalPrice"
             app:layout_constraintTop_toTopOf="@+id/textView4" />
 
         <ImageView
@@ -93,21 +93,21 @@
             android:layout_marginBottom="-8dp"
             android:text="@string/total"
             android:textStyle="normal"
-            app:layout_constraintBottom_toTopOf="@+id/textView20"
+            app:layout_constraintBottom_toTopOf="@+id/txtViewTotalPrice"
             app:layout_constraintStart_toStartOf="parent" />
 
         <TextView
-            android:id="@+id/textView20"
+            android:id="@+id/txtViewTotalPrice"
             style="@style/large_dark_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="954"
-            app:layout_constraintBottom_toBottomOf="@+id/txtViewTotalPrice"
-            app:layout_constraintStart_toEndOf="@+id/txtViewTotalPrice"
-            app:layout_constraintTop_toTopOf="@+id/txtViewTotalPrice" />
+            app:layout_constraintBottom_toBottomOf="@+id/txtView20"
+            app:layout_constraintStart_toEndOf="@+id/txtView20"
+            app:layout_constraintTop_toTopOf="@+id/txtView20" />
 
         <TextView
-            android:id="@+id/txtViewTotalPrice"
+            android:id="@+id/txtView20"
             style="@style/large_dark_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

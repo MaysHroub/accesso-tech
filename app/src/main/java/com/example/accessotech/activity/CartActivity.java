@@ -68,7 +68,10 @@ public class CartActivity extends AppCompatActivity {
     }
 
     public void updateTextViewTotalPrice() {
-        txtViewTotalPrice.setText(String.format("%.2f", cartDao.getUpdatedTotalPrice()));
+        if (cartDao.isEmpty())
+            txtViewTotalPrice.setText("0.00");
+        else
+            txtViewTotalPrice.setText(String.format("%0.2f", cartDao.getUpdatedTotalPrice()));
     }
 
     public void checkoutItems(View view) {
@@ -85,14 +88,14 @@ public class CartActivity extends AppCompatActivity {
         cartDao.clear();
 
         recyclerViewCartItems.getAdapter().notifyDataSetChanged();
-        txtViewTotalPrice.setText("0.00");
+        updateTextViewTotalPrice();
         Toast.makeText(this, "Checkout successful! Thank you for your purchase", Toast.LENGTH_SHORT).show();
     }
 
     public void clearCart(View view) {
         cartDao.clear();
         recyclerViewCartItems.getAdapter().notifyDataSetChanged();
-        txtViewTotalPrice.setText("0.00");
+        updateTextViewTotalPrice();
     }
 
     @Override
