@@ -4,7 +4,6 @@ import static android.view.View.VISIBLE;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -20,7 +19,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.accessotech.R;
 import com.example.accessotech.adapter.CartItemAdapter;
-import com.example.accessotech.dao.Cart;
+import com.example.accessotech.model.Cart;
 import com.example.accessotech.dao.ItemDao;
 import com.example.accessotech.dao.ItemDaoImpl;
 import com.example.accessotech.model.CartItem;

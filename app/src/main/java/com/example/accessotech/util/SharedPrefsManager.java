@@ -1,13 +1,11 @@
 package com.example.accessotech.util;
 
-import static android.content.ContentValues.TAG;
 import static android.content.Context.MODE_PRIVATE;
 
 import android.content.Context;
 import android.content.SharedPreferences;
-import android.util.Log;
 
-import com.example.accessotech.dao.Cart;
+import com.example.accessotech.model.Cart;
 import com.example.accessotech.model.CartItem;
 import com.example.accessotech.model.Item;
 import com.example.accessotech.model.UserInfo;

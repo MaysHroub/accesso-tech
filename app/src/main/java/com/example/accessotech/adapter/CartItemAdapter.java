@@ -13,7 +13,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.accessotech.R;
 import com.example.accessotech.activity.CartActivity;
-import com.example.accessotech.dao.Cart;
+import com.example.accessotech.model.Cart;
 import com.example.accessotech.model.CartItem;
 import com.example.accessotech.util.DialogManager;
 

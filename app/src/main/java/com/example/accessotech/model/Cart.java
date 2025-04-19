@@ -1,8 +1,4 @@
-package com.example.accessotech.dao;
-
-import com.example.accessotech.model.CartItem;
-import com.example.accessotech.model.Item;
-import com.example.accessotech.util.SharedPrefsManager;
+package com.example.accessotech.model;
 
 import java.util.ArrayList;
 import java.util.List;

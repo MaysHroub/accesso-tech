@@ -4,7 +4,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 
@@ -18,11 +17,9 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.accessotech.R;
 import com.example.accessotech.adapter.ItemAdapter;
-import com.example.accessotech.dao.Cart;
 import com.example.accessotech.dao.ItemDao;
 import com.example.accessotech.dao.ItemDaoImpl;
 import com.example.accessotech.util.PrefsKeys;
-import com.example.accessotech.util.SharedPrefsManager;
 
 public class HomeActivity extends AppCompatActivity {
 

@@ -16,7 +16,7 @@ import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
 import com.example.accessotech.R;
-import com.example.accessotech.dao.Cart;
+import com.example.accessotech.model.Cart;
 import com.example.accessotech.model.CartItem;
 import com.example.accessotech.model.Item;
 import com.example.accessotech.util.SharedPrefsManager;
