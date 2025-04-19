@@ -52,11 +52,16 @@
         <TextView
             android:id="@+id/txtViewName"
             style="@style/large_dark_text"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="32dp"
             android:layout_marginTop="32dp"
+            android:layout_marginEnd="-48dp"
+            android:maxLines="3"
+            android:scrollHorizontally="false"
+            android:ellipsize="none"
             android:text="Earbuds"
+            app:layout_constraintEnd_toStartOf="@+id/txtViewDiscount"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 

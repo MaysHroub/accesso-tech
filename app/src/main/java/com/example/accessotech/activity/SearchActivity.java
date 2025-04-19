@@ -76,7 +76,7 @@ public class SearchActivity extends AppCompatActivity {
     private void populateSpinners() {
         ArrayAdapter<String> categoryAdapter = new ArrayAdapter<>(
                 this,
-                androidx.appcompat.R.layout.support_simple_spinner_dropdown_item,
+                R.layout.spinner_item,
                 itemDao.findAllCategories()
         );
         categoryAdapter.insert(CATEGORY_OPTION, 0);
@@ -84,7 +84,7 @@ public class SearchActivity extends AppCompatActivity {
 
         ArrayAdapter<String> manufacturerAdapter = new ArrayAdapter<>(
                 this,
-                androidx.appcompat.R.layout.support_simple_spinner_dropdown_item,
+                R.layout.spinner_item,
                 itemDao.findAllManufacturers()
         );
         manufacturerAdapter.insert(MANUFACTURER_OPTION, 0);
@@ -92,7 +92,7 @@ public class SearchActivity extends AppCompatActivity {
 
         ArrayAdapter<String> ratingAdapter = new ArrayAdapter<>(
                 this,
-                androidx.appcompat.R.layout.support_simple_spinner_dropdown_item,
+                R.layout.spinner_item,
                 itemDao.findAllRatings()
         );
         ratingAdapter.insert(RATING_OPTION, 0);
