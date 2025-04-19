@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 
@@ -40,14 +41,8 @@ public class HomeActivity extends AppCompatActivity {
         });
 
         itemDao = new ItemDaoImpl(this);
-        setUpAppsData();
         setUpViews();
         populateRecyclerView();
-        SharedPrefsManager.loadCart(this);
-    }
-
-    private void setUpAppsData() {
-
     }
 
     private void setUpViews() {
@@ -66,16 +61,19 @@ public class HomeActivity extends AppCompatActivity {
     public void navigateToCartActivity(View view) {
         Intent intent = new Intent(this, CartActivity.class);
         startActivity(intent);
+        finish();
     }
 
     public void navigateToSearchActivity(View view) {
         Intent intent = new Intent(this, SearchActivity.class);
         startActivity(intent);
+        finish();
     }
 
     public void navigateToProfileActivity(View view) {
         Intent intent = new Intent(this, UserProfileActivity.class);
         startActivity(intent);
+        finish();
     }
 
     @Override
@@ -84,11 +82,6 @@ public class HomeActivity extends AppCompatActivity {
         populateRecyclerView();
     }
 
-    @Override
-    protected void onStop() {
-        super.onStop();
-        SharedPrefsManager.saveCart(this);
-    }
 }
 
 

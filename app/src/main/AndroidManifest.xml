@@ -19,7 +19,7 @@
             android:name=".activity.CreateAccountActivity"
             android:exported="false" />
         <activity
-            android:name=".activity.SplashActivity"
+            android:name=".activity.HomeActivity"
             android:exported="false" />
         <activity
             android:name=".activity.CartActivity"
@@ -34,7 +34,7 @@
             android:name=".activity.LoginActivity"
             android:exported="false" />
         <activity
-            android:name=".activity.HomeActivity"
+            android:name=".activity.SplashActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

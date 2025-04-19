@@ -19,6 +19,7 @@ import com.example.accessotech.R;
 import com.example.accessotech.dao.Cart;
 import com.example.accessotech.model.CartItem;
 import com.example.accessotech.model.Item;
+import com.example.accessotech.util.SharedPrefsManager;
 import com.google.gson.Gson;
 
 public class ItemDetailsActivity extends AppCompatActivity {
@@ -94,6 +95,12 @@ public class ItemDetailsActivity extends AppCompatActivity {
 
     public void backToPreviousActivity(View view) {
         finish();
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        SharedPrefsManager.saveCart(this);
     }
 
 }

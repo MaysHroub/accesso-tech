@@ -5,11 +5,11 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#212121"
     tools:context=".activity.SplashActivity">
 
     <ImageView
         android:id="@+id/imageView"
+        android:visibility="gone"
         android:layout_width="300dp"
         android:layout_height="300dp"
         android:contentDescription="@string/mouse_with_shop_name"

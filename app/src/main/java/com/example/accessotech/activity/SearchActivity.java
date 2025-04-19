@@ -125,6 +125,8 @@ public class SearchActivity extends AppCompatActivity {
     }
 
     public void navigateToHomeActivity(View view) {
+        Intent intent = new Intent(this, HomeActivity.class);
+        startActivity(intent);
         finish();
     }
 
