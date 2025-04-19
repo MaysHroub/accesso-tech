@@ -5,18 +5,21 @@ import java.util.Objects;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 
-@AllArgsConstructor
 @Getter
 public class CartItem {
 
-    private Item item;
+    private final Item item;
     private int quantityInCart;
 
+    public CartItem(Item item) {
+        this.item = item;
+        quantityInCart = 1;
+    }
+
     public boolean incrementQuantityInCart() {
-        if (item.getQuantityInStock() == 0)
+        if (item.getQuantityInStock() == 0 || quantityInCart >= item.getQuantityInStock())
             return false;
         quantityInCart++;
-        item.setQuantityInStock(item.getQuantityInStock() - 1);
         return true;
     }
 
@@ -24,7 +27,6 @@ public class CartItem {
         if (quantityInCart == 1)
             return false;
         quantityInCart--;
-        item.setQuantityInStock(item.getQuantityInStock() + 1);
         return true;
     }
 

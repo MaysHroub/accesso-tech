@@ -20,11 +20,12 @@ import com.example.accessotech.adapter.ItemAdapter;
 import com.example.accessotech.dao.ItemDao;
 import com.example.accessotech.dao.ItemDaoImpl;
 import com.example.accessotech.util.PrefsKeys;
+import com.example.accessotech.util.SharedPrefsManager;
 
 public class HomeActivity extends AppCompatActivity {
 
-    private TextView txtHello;
     private RecyclerView recyclerViewItems;
+    private ItemDao itemDao;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,39 +38,40 @@ public class HomeActivity extends AppCompatActivity {
             return insets;
         });
 
+        itemDao = new ItemDaoImpl(this);
         setUpViews();
-        loadDataInRecyclerView();
+        populateRecyclerView();
     }
 
     private void setUpViews() {
-        txtHello = findViewById(R.id.txtHello);
+        TextView txtViewUsernameGreeting = findViewById(R.id.txtViewUsernameGreeting);
         recyclerViewItems = findViewById(R.id.recyclerViewItems);
         SharedPreferences prefs = getSharedPreferences(PrefsKeys.ACCOUNT_INFO_SHARED_PREF.getKey(), Context.MODE_PRIVATE);
-        txtHello.setText(String.format("Hello\n%s!", prefs.getString(PrefsKeys.USERNAME.getKey(), "Lovely Person")));
+        txtViewUsernameGreeting.setText(prefs.getString(PrefsKeys.USERNAME.getKey(), "Lovely Person"));
     }
 
-    private void loadDataInRecyclerView() {
-        ItemDao itemDao = new ItemDaoImpl();
+    private void populateRecyclerView() {
         ItemAdapter adapter = new ItemAdapter(this, itemDao.findAllItems());
         recyclerViewItems.setLayoutManager(new LinearLayoutManager(this));
         recyclerViewItems.setAdapter(adapter);
     }
 
-    public void launchCartActivity(View view) {
-        Intent intent = new Intent(HomeActivity.this, CartActivity.class);
+    public void navigateToCartActivity(View view) {
+        Intent intent = new Intent(this, CartActivity.class);
         startActivity(intent);
         finish();
     }
 
-    public void launchSearchActivity(View view) {
-        Intent intent = new Intent(HomeActivity.this, SearchActivity.class);
+    public void navigateToSearchActivity(View view) {
+        Intent intent = new Intent(this, SearchActivity.class);
         startActivity(intent);
         finish();
     }
 
-    public void launchUserProfileActivity(View view) {
-        Intent intent = new Intent(HomeActivity.this, UserProfileActivity.class);
+    public void navigateToProfileActivity(View view) {
+        Intent intent = new Intent(this, UserProfileActivity.class);
         startActivity(intent);
         finish();
     }
+
 }

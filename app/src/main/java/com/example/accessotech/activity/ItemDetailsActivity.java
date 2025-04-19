@@ -7,7 +7,6 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -16,19 +15,17 @@ import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
 import com.example.accessotech.R;
-import com.example.accessotech.model.Cart;
+import com.example.accessotech.dao.CartDao;
 import com.example.accessotech.model.Item;
 import com.google.gson.Gson;
 
 public class ItemDetailsActivity extends AppCompatActivity {
 
-    // TODO: add + - buttons for specifying quantity added to cart
-
     private TextView txtViewName, txtViewRating, txtViewPrice,
             txtViewQuantityInStock, txtViewDiscount, txtViewDescription;
     private Button btnAddToCart;
     private Item item;
-    private String previousActivityName;
+    private CartDao cartDao;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,6 +37,7 @@ public class ItemDetailsActivity extends AppCompatActivity {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
+        cartDao = new CartDao(this);
 
         fetchData();
         setUpViews();
@@ -48,7 +46,6 @@ public class ItemDetailsActivity extends AppCompatActivity {
 
     private void fetchData() {
         Intent intent = getIntent();
-        previousActivityName = intent.getStringExtra("activity");
         String json = intent.getStringExtra("item");
         Gson gson = new Gson();
         item = gson.fromJson(json, Item.class);
@@ -79,29 +76,30 @@ public class ItemDetailsActivity extends AppCompatActivity {
         else
             txtViewDiscount.setVisibility(GONE);
 
-        if (item.getQuantityInStock() == 0)
+        if (item.getQuantityInStock() == 0) {
             btnAddToCart.setEnabled(false);
-
-        if (Cart.getInstance().hasItem(item)) {
+            txtViewQuantityInStock.setText(R.string.out_of_stock);
+        }
+        if (cartDao.hasItem(item)) {
             btnAddToCart.setEnabled(false);
             btnAddToCart.setText(R.string.item_is_added);
         }
     }
 
     public void addItemToCart(View view) {
-        Cart.getInstance().addItem(item);
+        cartDao.addItem(item);
         btnAddToCart.setEnabled(false);
         btnAddToCart.setText(R.string.item_is_added);
     }
 
     public void backToPreviousActivity(View view) {
-        Intent intent;
-        if (previousActivityName.equals(HomeActivity.class.getName()))
-            intent = new Intent(ItemDetailsActivity.this, HomeActivity.class);
-        else
-            intent = new Intent(ItemDetailsActivity.this, SearchActivity.class);
-        startActivity(intent);
         finish();
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        cartDao.saveAllCartItems();
     }
 }
 

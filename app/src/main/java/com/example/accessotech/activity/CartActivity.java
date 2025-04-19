@@ -3,7 +3,6 @@ package com.example.accessotech.activity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -17,13 +16,19 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.accessotech.R;
 import com.example.accessotech.adapter.CartItemAdapter;
-import com.example.accessotech.model.Cart;
+import com.example.accessotech.dao.ItemDao;
+import com.example.accessotech.dao.ItemDaoImpl;
+import com.example.accessotech.dao.CartDao;
+import com.example.accessotech.model.CartItem;
+import com.example.accessotech.model.Item;
+
+import java.util.List;
 
 public class CartActivity extends AppCompatActivity {
 
     private TextView txtViewTotalPrice;
-    private Button btnCheckout;
     private RecyclerView recyclerViewCartItems;
+    private CartDao cartDao;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,6 +40,7 @@ public class CartActivity extends AppCompatActivity {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
+        cartDao = new CartDao(this);
         setUpViews();
         populateRecyclerView();
     }
@@ -43,38 +49,50 @@ public class CartActivity extends AppCompatActivity {
         // TODO: rename components in xml
         txtViewTotalPrice = findViewById(R.id.txtTotalPrice);
         recyclerViewCartItems = findViewById(R.id.recyclerViewCartItems);
-        btnCheckout = findViewById(R.id.btnCheckout);
-        if (Cart.getInstance().isEmpty())
+        Button btnCheckout = findViewById(R.id.btnCheckout);
+        if (cartDao.isEmpty())
             btnCheckout.setEnabled(false);
         updateTextViewTotalPrice();
     }
 
     private void populateRecyclerView() {
-        CartItemAdapter adapter = new CartItemAdapter(this, Cart.getInstance().getCartItems());
+        CartItemAdapter adapter = new CartItemAdapter(this, cartDao.findAllCartItems());
         recyclerViewCartItems.setLayoutManager(new LinearLayoutManager(this));
         recyclerViewCartItems.setAdapter(adapter);
     }
 
     public void updateTextViewTotalPrice() {
-        txtViewTotalPrice.setText(Cart.getInstance().getTotalPrice()+"");
+        txtViewTotalPrice.setText(String.format("%.2f", cartDao.getUpdatedTotalPrice()));
     }
 
     public void checkoutItems(View view) {
-        Cart.getInstance().clear();
+        ItemDao itemDao = new ItemDaoImpl(this);
+        List<CartItem> cartItems = cartDao.findAllCartItems();
+        List<Item> items = itemDao.findAllItems();
+
+        for (CartItem cartItem : cartItems) {
+            int itemIdx = items.indexOf(cartItem.getItem());
+            Item item = items.get(itemIdx);
+            item.setQuantityInStock(item.getQuantityInStock() - cartItem.getQuantityInCart());
+        }
+        itemDao.saveAllItems();
+        cartDao.clear();
+
         recyclerViewCartItems.getAdapter().notifyDataSetChanged();
         txtViewTotalPrice.setText("0.0");
         Toast.makeText(this, "Checkout successful! Thank you for your purchase", Toast.LENGTH_SHORT).show();
     }
 
     public void clearCart(View view) {
-        Cart.getInstance().reset();
+        cartDao.clear();
         recyclerViewCartItems.getAdapter().notifyDataSetChanged();
         txtViewTotalPrice.setText("0.0");
     }
 
-    public void backToPrevActivity(View view) {
-        finish();
+    @Override
+    protected void onStop() {
+        super.onStop();
+        cartDao.saveAllCartItems();
     }
-
 }
 

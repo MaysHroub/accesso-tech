@@ -8,25 +8,12 @@ import java.util.Set;
 
 public class DataLoader {
 
-    private final ItemDao itemDao;
-
-    public DataLoader(ItemDao itemDao) {
-        this.itemDao = itemDao;
+    public List<String> loadRatings() {
+        return List.of("1", "2", "3", "4", "5");
     }
 
-    public void loadData() {
-        loadCategories();
-        loadManufacturers();
-        loadRatings();
-        loadItems();
-    }
-
-    private void loadRatings() {
-        itemDao.saveAllRatings(List.of("1", "2", "3", "4", "5"));
-    }
-
-    private void loadCategories() {
-        itemDao.saveAllCategories(List.of(
+    public List<String> loadCategories() {
+        return List.of(
                 "Earbuds",
                 "Headphones",
                 "Chargers",
@@ -43,11 +30,11 @@ public class DataLoader {
                 "Webcams",
                 "Laptop Stands",
                 "Cooling Pads"
-        ));
+        );
     }
 
-    private void loadManufacturers() {
-        itemDao.saveAllManufacturers(List.of(
+    public List<String> loadManufacturers() {
+        return List.of(
                 "Apple",
                 "Samsung",
                 "Anker",
@@ -63,11 +50,11 @@ public class DataLoader {
                 "Aukey",
                 "HyperX",
                 "Beats"
-        ));
+        );
     }
 
-    private void loadItems() {
-        List<Item> items = List.of(
+    public List<Item> loadItems() {
+        return List.of(
                 new Item(1, "AirPods Pro", "Wireless earbuds with active noise cancellation.",
                         "Earbuds", "Apple", "https://example.com/images/airpods_pro.png",
                         249.99f, 15, 5, 10),
@@ -108,7 +95,6 @@ public class DataLoader {
                         "Accessories", "Ugreen", "https://example.com/images/ugreen_hub.png",
                         39.99f, 22, 3, 15)
         );
-        itemDao.saveAllItems(items);
     }
 
 }

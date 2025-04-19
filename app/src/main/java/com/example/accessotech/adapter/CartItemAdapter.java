@@ -7,19 +7,17 @@ import android.view.ViewGroup;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.accessotech.R;
 import com.example.accessotech.activity.CartActivity;
-import com.example.accessotech.model.Cart;
+import com.example.accessotech.dao.CartDao;
 import com.example.accessotech.model.CartItem;
 import com.example.accessotech.util.AlertManager;
 
 import java.util.List;
-import java.util.Set;
 
 public class CartItemAdapter extends RecyclerView.Adapter<CartItemAdapter.ItemViewHolder> {
 
@@ -51,25 +49,26 @@ public class CartItemAdapter extends RecyclerView.Adapter<CartItemAdapter.ItemVi
     }
 
     private void addButtonClickListeners(@NonNull ItemViewHolder holder, CartItem cartItem) {
+        final CartDao cartDao = new CartDao(context);
         holder.btnDeleteItem.setOnClickListener(v -> {
             AlertManager.showDialog(
                     context,
                     "Remove Item",
                     "Are you sure you want to remove this item?",
                     () -> {
-                        Cart.getInstance().removeItem(cartItem.getItem());
+                        cartDao.removeItem(cartItem.getItem());
                         notifyDataSetChanged();
                         ((CartActivity) context).updateTextViewTotalPrice();
                     }
             );
         });
         holder.btnIncrementQuantity.setOnClickListener(v -> {
-            Cart.getInstance().incrementQuantity(cartItem);
+            cartDao.incrementQuantity(cartItem);
             holder.txtViewItemQuantity.setText(cartItem.getQuantityInCart()+"");
             ((CartActivity) context).updateTextViewTotalPrice();
         });
         holder.btnDecrementQuantity.setOnClickListener(v -> {
-            Cart.getInstance().decrementQuantity(cartItem);
+            cartDao.decrementQuantity(cartItem);
             holder.txtViewItemQuantity.setText(cartItem.getQuantityInCart()+"");
             ((CartActivity) context).updateTextViewTotalPrice();
         });

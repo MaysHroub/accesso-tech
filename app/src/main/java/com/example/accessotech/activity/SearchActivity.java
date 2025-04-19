@@ -1,6 +1,5 @@
 package com.example.accessotech.activity;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
@@ -20,6 +19,7 @@ import com.example.accessotech.adapter.FilteredItemAdapter;
 import com.example.accessotech.adapter.ItemFilter;
 import com.example.accessotech.dao.ItemDao;
 import com.example.accessotech.dao.ItemDaoImpl;
+import com.example.accessotech.util.SharedPrefsManager;
 
 public class SearchActivity extends AppCompatActivity {
 
@@ -42,7 +42,8 @@ public class SearchActivity extends AppCompatActivity {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
-        itemDao = new ItemDaoImpl();
+
+        itemDao = new ItemDaoImpl(this);
         setUpViews();
         fillViewsWithData();
     }
@@ -58,11 +59,11 @@ public class SearchActivity extends AppCompatActivity {
     }
 
     private void fillViewsWithData() {
-        fillSpinnersWithData();
-        fillRecyclerViewWithData();
+        populateSpinners();
+        populateRecyclerView();
     }
 
-    private void fillSpinnersWithData() {
+    private void populateSpinners() {
         ArrayAdapter<String> categoryAdapter = new ArrayAdapter<>(
                 this,
                 androidx.appcompat.R.layout.support_simple_spinner_dropdown_item,
@@ -88,16 +89,10 @@ public class SearchActivity extends AppCompatActivity {
         spnrRating.setAdapter(ratingAdapter);
     }
 
-    private void fillRecyclerViewWithData() {
+    private void populateRecyclerView() {
         adapter = new FilteredItemAdapter(this, itemDao.findAllItems());
         recyclerViewFilteredItems.setLayoutManager(new LinearLayoutManager(this));
         recyclerViewFilteredItems.setAdapter(adapter);
-    }
-
-    public void navigateBackToHomeActivity(View view) {
-        Intent intent = new Intent(SearchActivity.this, HomeActivity.class);
-        startActivity(intent);
-        finish();
     }
 
     public void searchForItemAndUpdateRecyclerView(View view) {
