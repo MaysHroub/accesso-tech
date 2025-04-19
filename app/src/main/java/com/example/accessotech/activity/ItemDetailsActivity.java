@@ -4,7 +4,6 @@ import static android.view.View.GONE;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -17,7 +16,8 @@ import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
 import com.example.accessotech.R;
-import com.example.accessotech.dao.CartDao;
+import com.example.accessotech.dao.Cart;
+import com.example.accessotech.model.CartItem;
 import com.example.accessotech.model.Item;
 import com.google.gson.Gson;
 
@@ -28,7 +28,6 @@ public class ItemDetailsActivity extends AppCompatActivity {
     private Button btnAddToCart;
     private ImageView imgItemInDetails;
     private Item item;
-    private CartDao cartDao;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,8 +39,6 @@ public class ItemDetailsActivity extends AppCompatActivity {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
-        cartDao = new CartDao(this);
-
         fetchData();
         setUpViews();
         fillViews();
@@ -83,30 +80,22 @@ public class ItemDetailsActivity extends AppCompatActivity {
             btnAddToCart.setText(R.string.not_available);
             txtViewQuantityInStock.setText(R.string.out_of_stock);
         }
-        if (cartDao.hasItem(item)) {
+        if (Cart.getInstance().has(item)) {
             btnAddToCart.setEnabled(false);
             btnAddToCart.setText(R.string.item_is_added);
         }
     }
 
     public void addItemToCart(View view) {
-        cartDao.addItem(item);
+        Cart.getInstance().add(new CartItem(item));
         btnAddToCart.setEnabled(false);
         btnAddToCart.setText(R.string.item_is_added);
-
-        Log.d("cart", "addItemToCart: " + item.getName());
-        Log.d("cart", "addItemToCart: " + cartDao.hasItem(item));
     }
 
     public void backToPreviousActivity(View view) {
         finish();
     }
 
-    @Override
-    protected void onStop() {
-        super.onStop();
-        cartDao.saveAllCartItems();
-    }
 }
 
 

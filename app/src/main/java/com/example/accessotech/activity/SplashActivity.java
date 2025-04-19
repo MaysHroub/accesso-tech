@@ -15,7 +15,7 @@ import androidx.core.view.WindowInsetsCompat;
 import com.example.accessotech.R;
 import com.example.accessotech.util.PrefsKeys;
 
-public class MainActivity extends AppCompatActivity {
+public class SplashActivity extends AppCompatActivity {
 
     private SharedPreferences prefs;
 
@@ -40,11 +40,11 @@ public class MainActivity extends AppCompatActivity {
             boolean hasAccount = prefs.getBoolean(PrefsKeys.ACCOUNT_EXISTS.getKey(), false);
             Intent intent;
             if (hasAccount)
-                intent = new Intent(MainActivity.this, LoginActivity.class);
+                intent = new Intent(SplashActivity.this, LoginActivity.class);
             else
-                intent = new Intent(MainActivity.this, CreateAccountActivity.class);
+                intent = new Intent(SplashActivity.this, CreateAccountActivity.class);
             startActivity(intent);
             finish();
-        }, 5000);
+        }, 3000);
     }
 }

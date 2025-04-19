@@ -21,7 +21,7 @@ public enum PrefsKeys {
 
     private final String key;
 
-    private PrefsKeys(String key) {
+    PrefsKeys(String key) {
         this.key = key;
     }
 

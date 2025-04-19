@@ -1,4 +1,4 @@
-package com.example.accessotech.adapter;
+package com.example.accessotech.filter;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

@@ -1,8 +1,5 @@
 package com.example.accessotech.model;
 
-import java.util.Objects;
-
-import lombok.AllArgsConstructor;
 import lombok.Getter;
 
 @Getter
@@ -16,18 +13,16 @@ public class CartItem {
         quantityInCart = 1;
     }
 
-    public boolean incrementQuantityInCart() {
+    public void incrementQuantityInCart() {
         if (item.getQuantityInStock() == 0 || quantityInCart >= item.getQuantityInStock())
-            return false;
+            return;
         quantityInCart++;
-        return true;
     }
 
-    public boolean decrementQuantityInCart() {
+    public void decrementQuantityInCart() {
         if (quantityInCart == 1)
-            return false;
+            return;
         quantityInCart--;
-        return true;
     }
 
     @Override

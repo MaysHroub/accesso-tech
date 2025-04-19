@@ -17,6 +17,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.accessotech.R;
 import com.example.accessotech.adapter.ItemAdapter;
+import com.example.accessotech.dao.Cart;
 import com.example.accessotech.dao.ItemDao;
 import com.example.accessotech.dao.ItemDaoImpl;
 import com.example.accessotech.util.PrefsKeys;
@@ -39,8 +40,14 @@ public class HomeActivity extends AppCompatActivity {
         });
 
         itemDao = new ItemDaoImpl(this);
+        setUpAppsData();
         setUpViews();
         populateRecyclerView();
+        SharedPrefsManager.loadCart(this);
+    }
+
+    private void setUpAppsData() {
+
     }
 
     private void setUpViews() {
@@ -59,19 +66,33 @@ public class HomeActivity extends AppCompatActivity {
     public void navigateToCartActivity(View view) {
         Intent intent = new Intent(this, CartActivity.class);
         startActivity(intent);
-        finish();
     }
 
     public void navigateToSearchActivity(View view) {
         Intent intent = new Intent(this, SearchActivity.class);
         startActivity(intent);
-        finish();
     }
 
     public void navigateToProfileActivity(View view) {
         Intent intent = new Intent(this, UserProfileActivity.class);
         startActivity(intent);
-        finish();
     }
 
+    @Override
+    protected void onStart() {
+        super.onStart();
+        populateRecyclerView();
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        SharedPrefsManager.saveCart(this);
+    }
 }
+
+
+
+
+
+

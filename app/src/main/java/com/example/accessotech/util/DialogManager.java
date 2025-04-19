@@ -4,7 +4,7 @@ import android.content.Context;
 
 import androidx.appcompat.app.AlertDialog;
 
-public class AlertManager {
+public class DialogManager {
 
     public static void showDialog(Context context, String title, String message, Runnable onConfirm) {
         new AlertDialog.Builder(context)

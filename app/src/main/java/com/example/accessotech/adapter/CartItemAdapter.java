@@ -13,20 +13,16 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.accessotech.R;
 import com.example.accessotech.activity.CartActivity;
-import com.example.accessotech.dao.CartDao;
+import com.example.accessotech.dao.Cart;
 import com.example.accessotech.model.CartItem;
-import com.example.accessotech.util.AlertManager;
-
-import java.util.List;
+import com.example.accessotech.util.DialogManager;
 
 public class CartItemAdapter extends RecyclerView.Adapter<CartItemAdapter.ItemViewHolder> {
 
     private final Context context;
-    private CartDao cartDao;
 
-    public CartItemAdapter(Context context, CartDao cartDao) {
+    public CartItemAdapter(Context context) {
         this.context = context;
-        this.cartDao = cartDao;
     }
 
     @NonNull
@@ -38,7 +34,7 @@ public class CartItemAdapter extends RecyclerView.Adapter<CartItemAdapter.ItemVi
 
     @Override
     public void onBindViewHolder(@NonNull ItemViewHolder holder, int position) {
-        CartItem cartItem = cartDao.findAllCartItems().get(position);
+        CartItem cartItem = Cart.getInstance().getAt(position);
         holder.txtViewItemName.setText(cartItem.getItem().getName());
         holder.txtViewItemPrice.setText(String.format("%.2f", cartItem.getItem().getDiscountedPrice()));
         holder.txtViewItemQuantity.setText(cartItem.getQuantityInCart()+"");
@@ -48,12 +44,12 @@ public class CartItemAdapter extends RecyclerView.Adapter<CartItemAdapter.ItemVi
 
     private void addButtonClickListeners(@NonNull ItemViewHolder holder, CartItem cartItem) {
         holder.btnRemoveItem.setOnClickListener(v -> {
-            AlertManager.showDialog(
+            DialogManager.showDialog(
                     context,
                     "Remove Item",
                     "Are you sure you want to remove this item?",
                     () -> {
-                        cartDao.removeItem(cartItem.getItem());
+                        Cart.getInstance().remove(cartItem);
                         notifyDataSetChanged();
                         if (getItemCount() == 0) {
                             ((CartActivity) context).showCartEmptyText();
@@ -64,12 +60,12 @@ public class CartItemAdapter extends RecyclerView.Adapter<CartItemAdapter.ItemVi
             );
         });
         holder.btnIncrementQuantity.setOnClickListener(v -> {
-            cartDao.incrementQuantity(cartItem);
+            cartItem.incrementQuantityInCart();
             holder.txtViewItemQuantity.setText(cartItem.getQuantityInCart()+"");
             ((CartActivity) context).updateTextViewTotalPrice();
         });
         holder.btnDecrementQuantity.setOnClickListener(v -> {
-            cartDao.decrementQuantity(cartItem);
+            cartItem.decrementQuantityInCart();
             holder.txtViewItemQuantity.setText(cartItem.getQuantityInCart()+"");
             ((CartActivity) context).updateTextViewTotalPrice();
         });
@@ -77,7 +73,7 @@ public class CartItemAdapter extends RecyclerView.Adapter<CartItemAdapter.ItemVi
 
     @Override
     public int getItemCount() {
-        return cartDao.findAllCartItems().size();
+        return Cart.getInstance().size();
     }
 
     static class ItemViewHolder extends RecyclerView.ViewHolder {

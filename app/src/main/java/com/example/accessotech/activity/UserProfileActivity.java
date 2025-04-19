@@ -13,7 +13,9 @@ import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
 import com.example.accessotech.R;
+import com.example.accessotech.model.UserInfo;
 import com.example.accessotech.util.PrefsKeys;
+import com.example.accessotech.util.SharedPrefsManager;
 
 public class UserProfileActivity extends AppCompatActivity {
 
@@ -38,13 +40,14 @@ public class UserProfileActivity extends AppCompatActivity {
                 txtViewPhoneNumber = findViewById(R.id.txtViewPhoneNumber),
                 txtViewCardNumber = findViewById(R.id.txtViewCardNumber);
 
-        SharedPreferences prefs = getSharedPreferences(PrefsKeys.ACCOUNT_INFO_SHARED_PREF.getKey(), MODE_PRIVATE);
-        txtViewUsername.setText(prefs.getString(PrefsKeys.USERNAME.getKey(), "None"));
-        txtViewEmail.setText(prefs.getString(PrefsKeys.EMAIL.getKey(), "None"));
-        txtViewPassword.setText(prefs.getString(PrefsKeys.PASSWORD.getKey(), "None"));
-        txtViewAddress.setText(prefs.getString(PrefsKeys.ADDRESS.getKey(), "None"));
-        txtViewPhoneNumber.setText(prefs.getString(PrefsKeys.PHONE_NUMBER.getKey(), "None"));
-        txtViewCardNumber.setText(prefs.getString(PrefsKeys.CARD_NUMBER.getKey(), "None"));
+        UserInfo userInfo = SharedPrefsManager.loadUserInfo(this);
+
+        txtViewUsername.setText(userInfo.getName());
+        txtViewEmail.setText(userInfo.getEmail());
+        txtViewPassword.setText(userInfo.getPassword());
+        txtViewAddress.setText(userInfo.getAddress());
+        txtViewPhoneNumber.setText(userInfo.getPhoneNumber());
+        txtViewCardNumber.setText(userInfo.getCardNumber());
     }
 
     public void logout(View view) {
@@ -54,8 +57,6 @@ public class UserProfileActivity extends AppCompatActivity {
     }
 
     public void navigateToHomeActivity(View view) {
-        Intent intent = new Intent(this, HomeActivity.class);
-        startActivity(intent);
         finish();
     }
 

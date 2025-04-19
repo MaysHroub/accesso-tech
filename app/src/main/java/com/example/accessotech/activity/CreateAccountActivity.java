@@ -15,8 +15,10 @@ import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
 import com.example.accessotech.R;
+import com.example.accessotech.model.UserInfo;
 import com.example.accessotech.util.InputValidator;
 import com.example.accessotech.util.PrefsKeys;
+import com.example.accessotech.util.SharedPrefsManager;
 
 public class CreateAccountActivity extends AppCompatActivity {
     
@@ -70,16 +72,15 @@ public class CreateAccountActivity extends AppCompatActivity {
     }
 
     private void saveUserAccountState() {
-        SharedPreferences prefs = getSharedPreferences(PrefsKeys.ACCOUNT_INFO_SHARED_PREF.getKey(), Context.MODE_PRIVATE);
-        SharedPreferences.Editor editor = prefs.edit();
-        editor.putBoolean(PrefsKeys.ACCOUNT_EXISTS.getKey(), true);
-        editor.putString(PrefsKeys.USERNAME.getKey(), edtTxtUsername.getText().toString());
-        editor.putString(PrefsKeys.EMAIL.getKey(), edtTxtEmail.getText().toString());
-        editor.putString(PrefsKeys.PASSWORD.getKey(), edtTxtPassword.getText().toString());
-        editor.putString(PrefsKeys.ADDRESS.getKey(), edtTxtAddress.getText().toString());
-        editor.putString(PrefsKeys.PHONE_NUMBER.getKey(), edtTxtPhone.getText().toString());
-        editor.putString(PrefsKeys.CARD_NUMBER.getKey(), edtTxtCardNumber.getText().toString());
-        editor.apply();
+        UserInfo userInfo = new UserInfo(
+                edtTxtUsername.getText().toString(),
+                edtTxtEmail.getText().toString(),
+                edtTxtPassword.getText().toString(),
+                edtTxtAddress.getText().toString(),
+                edtTxtPhone.getText().toString(),
+                edtTxtCardNumber.getText().toString()
+        );
+        SharedPrefsManager.saveUserInfo(this, userInfo);
     }
 
     private void launchHomeActivity() {

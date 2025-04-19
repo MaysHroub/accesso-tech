@@ -9,11 +9,11 @@ import java.util.Set;
 
 public class DataLoader {
 
-    public List<String> loadRatings() {
+    public static List<String> loadRatings() {
         return List.of("1", "2", "3", "4", "5");
     }
 
-    public List<String> loadCategories() {
+    public static List<String> loadCategories() {
         return List.of(
                 "Earbuds",
                 "Headphones",
@@ -34,7 +34,7 @@ public class DataLoader {
         );
     }
 
-    public List<String> loadManufacturers() {
+    public static List<String> loadManufacturers() {
         return List.of(
                 "Apple",
                 "Samsung",
@@ -54,7 +54,7 @@ public class DataLoader {
         );
     }
 
-    public List<Item> loadItems() {
+    public static List<Item> loadItems() {
         return List.of(
                 new Item(1, "AirPods Pro", "Wireless earbuds with active noise cancellation.", "Earbuds", "Apple", R.drawable.airpods_pro, 249.99f, 15, 5, 10),
                 new Item(2, "Galaxy Buds 2", "Compact earbuds with clear sound and ANC.", "Earbuds", "Samsung", R.drawable.galaxy_buds_2, 149.99f, 20, 4, 15),

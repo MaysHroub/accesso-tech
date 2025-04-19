@@ -19,7 +19,7 @@
             android:name=".activity.CreateAccountActivity"
             android:exported="false" />
         <activity
-            android:name=".activity.MainActivity"
+            android:name=".activity.SplashActivity"
             android:exported="false" />
         <activity
             android:name=".activity.CartActivity"

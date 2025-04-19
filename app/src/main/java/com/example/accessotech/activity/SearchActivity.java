@@ -22,10 +22,12 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.accessotech.R;
 import com.example.accessotech.adapter.FilteredItemAdapter;
-import com.example.accessotech.adapter.ItemFilter;
+import com.example.accessotech.filter.ItemFilter;
 import com.example.accessotech.dao.ItemDao;
 import com.example.accessotech.dao.ItemDaoImpl;
-import com.example.accessotech.util.SharedPrefsManager;
+import com.example.accessotech.util.DataLoader;
+
+import java.util.ArrayList;
 
 public class SearchActivity extends AppCompatActivity {
 
@@ -77,7 +79,7 @@ public class SearchActivity extends AppCompatActivity {
         ArrayAdapter<String> categoryAdapter = new ArrayAdapter<>(
                 this,
                 R.layout.spinner_item,
-                itemDao.findAllCategories()
+                new ArrayList<>(DataLoader.loadCategories())
         );
         categoryAdapter.insert(CATEGORY_OPTION, 0);
         spnrCategory.setAdapter(categoryAdapter);
@@ -85,7 +87,7 @@ public class SearchActivity extends AppCompatActivity {
         ArrayAdapter<String> manufacturerAdapter = new ArrayAdapter<>(
                 this,
                 R.layout.spinner_item,
-                itemDao.findAllManufacturers()
+                new ArrayList<>(DataLoader.loadManufacturers())
         );
         manufacturerAdapter.insert(MANUFACTURER_OPTION, 0);
         spnrManufacturer.setAdapter(manufacturerAdapter);
@@ -93,7 +95,7 @@ public class SearchActivity extends AppCompatActivity {
         ArrayAdapter<String> ratingAdapter = new ArrayAdapter<>(
                 this,
                 R.layout.spinner_item,
-                itemDao.findAllRatings()
+                new ArrayList<>(DataLoader.loadRatings())
         );
         ratingAdapter.insert(RATING_OPTION, 0);
         spnrRating.setAdapter(ratingAdapter);
@@ -123,8 +125,6 @@ public class SearchActivity extends AppCompatActivity {
     }
 
     public void navigateToHomeActivity(View view) {
-        Intent intent = new Intent(this, HomeActivity.class);
-        startActivity(intent);
         finish();
     }
 

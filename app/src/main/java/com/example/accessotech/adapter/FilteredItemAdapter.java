@@ -4,14 +4,13 @@ import static android.view.View.GONE;
 
 import static com.example.accessotech.activity.SearchActivity.CATEGORY_OPTION;
 import static com.example.accessotech.activity.SearchActivity.MANUFACTURER_OPTION;
-import static com.example.accessotech.adapter.ItemFilter.CATEGORY;
-import static com.example.accessotech.adapter.ItemFilter.FROM_PRICE;
-import static com.example.accessotech.adapter.ItemFilter.MANUFACTURER;
-import static com.example.accessotech.adapter.ItemFilter.RATING;
-import static com.example.accessotech.adapter.ItemFilter.TO_PRICE;
+import static com.example.accessotech.filter.ItemFilter.CATEGORY;
+import static com.example.accessotech.filter.ItemFilter.FROM_PRICE;
+import static com.example.accessotech.filter.ItemFilter.MANUFACTURER;
+import static com.example.accessotech.filter.ItemFilter.RATING;
+import static com.example.accessotech.filter.ItemFilter.TO_PRICE;
 
 import android.content.Context;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -20,6 +19,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.accessotech.R;
+import com.example.accessotech.filter.ItemFilter;
 import com.example.accessotech.model.Item;
 
 import java.util.ArrayList;
