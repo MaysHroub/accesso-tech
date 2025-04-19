@@ -80,6 +80,7 @@ public class ItemDetailsActivity extends AppCompatActivity {
 
         if (item.getQuantityInStock() == 0) {
             btnAddToCart.setEnabled(false);
+            btnAddToCart.setText(R.string.not_available);
             txtViewQuantityInStock.setText(R.string.out_of_stock);
         }
         if (cartDao.hasItem(item)) {

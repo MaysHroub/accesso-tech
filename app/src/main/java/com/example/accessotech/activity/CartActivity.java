@@ -1,9 +1,11 @@
 package com.example.accessotech.activity;
 
+import static android.view.View.GONE;
 import static android.view.View.VISIBLE;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -24,12 +26,14 @@ import com.example.accessotech.dao.ItemDaoImpl;
 import com.example.accessotech.dao.CartDao;
 import com.example.accessotech.model.CartItem;
 import com.example.accessotech.model.Item;
+import com.example.accessotech.util.AlertManager;
 
 import java.util.List;
 
 public class CartActivity extends AppCompatActivity {
 
-    private TextView txtViewTotalPrice;
+    private TextView txtViewTotalPrice, txtViewEmptyCart;
+    private Button btnCheckout;
     private RecyclerView recyclerViewCartItems;
     private CartDao cartDao;
 
@@ -51,27 +55,33 @@ public class CartActivity extends AppCompatActivity {
     private void setUpViews() {
         txtViewTotalPrice = findViewById(R.id.txtViewTotalPrice);
         recyclerViewCartItems = findViewById(R.id.recyclerViewCartItems);
-        TextView txtViewEmptyCart = findViewById(R.id.txtViewEmptyCart);
-        Button btnCheckout = findViewById(R.id.btnCheckout);
+        txtViewEmptyCart = findViewById(R.id.txtViewEmptyCart);
+        btnCheckout = findViewById(R.id.btnCheckout);
         if (cartDao.isEmpty()) {
-            btnCheckout.setEnabled(false);
-            btnCheckout.setText("x");
-            txtViewEmptyCart.setVisibility(VISIBLE);
+            disableCheckoutButton();
+            showCartEmptyText();
         }
         updateTextViewTotalPrice();
     }
 
+    public void disableCheckoutButton() {
+        btnCheckout.setEnabled(false);
+        btnCheckout.setText("x");
+    }
+
+    public void showCartEmptyText() {
+        txtViewEmptyCart.setVisibility(VISIBLE);
+    }
+
     private void populateRecyclerView() {
-        CartItemAdapter adapter = new CartItemAdapter(this, cartDao.findAllCartItems());
+        CartItemAdapter adapter = new CartItemAdapter(this, cartDao);
         recyclerViewCartItems.setLayoutManager(new LinearLayoutManager(this));
         recyclerViewCartItems.setAdapter(adapter);
     }
 
     public void updateTextViewTotalPrice() {
-        if (cartDao.isEmpty())
-            txtViewTotalPrice.setText("0.00");
-        else
-            txtViewTotalPrice.setText(String.format("%.2f", cartDao.getUpdatedTotalPrice()));
+        Log.d("totalprice", "updateTextViewTotalPrice: " + cartDao.getUpdatedTotalPrice());
+        txtViewTotalPrice.setText(String.format("%.2f", cartDao.getUpdatedTotalPrice()));
     }
 
     public void checkoutItems(View view) {
@@ -89,13 +99,20 @@ public class CartActivity extends AppCompatActivity {
 
         recyclerViewCartItems.getAdapter().notifyDataSetChanged();
         updateTextViewTotalPrice();
+        showCartEmptyText();
+        disableCheckoutButton();
         Toast.makeText(this, "Checkout successful! Thank you for your purchase", Toast.LENGTH_SHORT).show();
     }
 
     public void clearCart(View view) {
-        cartDao.clear();
-        recyclerViewCartItems.getAdapter().notifyDataSetChanged();
-        updateTextViewTotalPrice();
+        if (cartDao.isEmpty()) return;
+        AlertManager.showDialog(this, "Clear Cart", "Are you sure you want to clear your cart?", () -> {
+            cartDao.clear();
+            recyclerViewCartItems.getAdapter().notifyDataSetChanged();
+            updateTextViewTotalPrice();
+            showCartEmptyText();
+            disableCheckoutButton();
+        });
     }
 
     @Override

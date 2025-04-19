@@ -51,12 +51,14 @@
 
         <TextView
             android:id="@+id/txtViewCartItemName"
-            android:layout_width="wrap_content"
+            style="@style/regular_dark_text"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
             android:text="Galaxy earbuds"
-            style="@style/regular_dark_text"
+            app:layout_constraintEnd_toStartOf="@+id/btnRemoveCartItem"
             app:layout_constraintStart_toEndOf="@+id/imgCartItem"
             app:layout_constraintTop_toTopOf="@+id/imgCartItem" />
 

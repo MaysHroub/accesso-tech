@@ -81,4 +81,5 @@
     <string name="out_of_stock">[OUT OF STOCK]</string>
     <string name="no_results_found">No Results Found</string>
     <string name="cart_is_empty">Cart is Empty</string>
+    <string name="not_available">Not Available</string>
 </resources>

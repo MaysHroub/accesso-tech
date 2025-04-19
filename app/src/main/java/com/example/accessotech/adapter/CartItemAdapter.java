@@ -22,11 +22,11 @@ import java.util.List;
 public class CartItemAdapter extends RecyclerView.Adapter<CartItemAdapter.ItemViewHolder> {
 
     private final Context context;
-    private final List<CartItem> cartItems;
+    private CartDao cartDao;
 
-    public CartItemAdapter(Context context, List<CartItem> cartItems) {
+    public CartItemAdapter(Context context, CartDao cartDao) {
         this.context = context;
-        this.cartItems = cartItems;
+        this.cartDao = cartDao;
     }
 
     @NonNull
@@ -38,7 +38,7 @@ public class CartItemAdapter extends RecyclerView.Adapter<CartItemAdapter.ItemVi
 
     @Override
     public void onBindViewHolder(@NonNull ItemViewHolder holder, int position) {
-        CartItem cartItem = cartItems.get(position);
+        CartItem cartItem = cartDao.findAllCartItems().get(position);
         holder.txtViewItemName.setText(cartItem.getItem().getName());
         holder.txtViewItemPrice.setText(String.format("%.2f", cartItem.getItem().getDiscountedPrice()));
         holder.txtViewItemQuantity.setText(cartItem.getQuantityInCart()+"");
@@ -47,8 +47,7 @@ public class CartItemAdapter extends RecyclerView.Adapter<CartItemAdapter.ItemVi
     }
 
     private void addButtonClickListeners(@NonNull ItemViewHolder holder, CartItem cartItem) {
-        final CartDao cartDao = new CartDao(context);
-        holder.btnDeleteItem.setOnClickListener(v -> {
+        holder.btnRemoveItem.setOnClickListener(v -> {
             AlertManager.showDialog(
                     context,
                     "Remove Item",
@@ -56,6 +55,10 @@ public class CartItemAdapter extends RecyclerView.Adapter<CartItemAdapter.ItemVi
                     () -> {
                         cartDao.removeItem(cartItem.getItem());
                         notifyDataSetChanged();
+                        if (getItemCount() == 0) {
+                            ((CartActivity) context).showCartEmptyText();
+                            ((CartActivity) context).disableCheckoutButton();
+                        }
                         ((CartActivity) context).updateTextViewTotalPrice();
                     }
             );
@@ -74,13 +77,13 @@ public class CartItemAdapter extends RecyclerView.Adapter<CartItemAdapter.ItemVi
 
     @Override
     public int getItemCount() {
-        return cartItems.size();
+        return cartDao.findAllCartItems().size();
     }
 
     static class ItemViewHolder extends RecyclerView.ViewHolder {
 
         ImageView imgItem;
-        ImageButton btnIncrementQuantity, btnDecrementQuantity, btnDeleteItem;
+        ImageButton btnIncrementQuantity, btnDecrementQuantity, btnRemoveItem;
         TextView txtViewItemName, txtViewItemPrice, txtViewItemQuantity;
 
         public ItemViewHolder(@NonNull View itemView) {
@@ -88,7 +91,7 @@ public class CartItemAdapter extends RecyclerView.Adapter<CartItemAdapter.ItemVi
             imgItem = itemView.findViewById(R.id.imgCartItem);
             btnIncrementQuantity = itemView.findViewById(R.id.btnIncrementQuantity);
             btnDecrementQuantity = itemView.findViewById(R.id.btnDecrementQuantity);
-            btnDeleteItem = itemView.findViewById(R.id.btnRemoveCartItem);
+            btnRemoveItem = itemView.findViewById(R.id.btnRemoveCartItem);
             txtViewItemName = itemView.findViewById(R.id.txtViewCartItemName);
             txtViewItemPrice = itemView.findViewById(R.id.txtViewCartItemPrice);
             txtViewItemQuantity = itemView.findViewById(R.id.txtViewCartItemQuantity);

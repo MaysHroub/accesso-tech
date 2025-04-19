@@ -1,6 +1,7 @@
 package com.example.accessotech.dao;
 
 import android.content.Context;
+import android.util.Log;
 
 import com.example.accessotech.model.CartItem;
 import com.example.accessotech.model.Item;
@@ -37,6 +38,8 @@ public class CartDao {
     public void removeItem(Item item) {
         CartItem cartItem = new CartItem(item);
         cartItems.remove(cartItem);
+        Log.d("totalprice", "removeItem: " + cartItems.contains(cartItem));
+        Log.d("totalprice", "removeItem: " + cartItems.size());
     }
 
     public boolean hasItem(Item item) {
@@ -61,8 +64,10 @@ public class CartDao {
 
     public float getUpdatedTotalPrice() {
         float totalPrice = 0f;
-        for (CartItem cartItem : cartItems)
-            totalPrice += cartItem.getQuantityInCart() * cartItem.getItem().getUnitPrice();
+        for (CartItem cartItem : cartItems) {
+            totalPrice += cartItem.getQuantityInCart() * cartItem.getItem().getDiscountedPrice();
+            Log.d("totalprice", "getUpdatedTotalPrice: " + totalPrice);
+        }
         return totalPrice;
     }
 
