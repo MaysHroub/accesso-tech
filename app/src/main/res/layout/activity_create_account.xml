@@ -34,8 +34,10 @@
             <EditText
                 android:id="@+id/edtTxtUsername"
                 style="@style/edit_text"
+                android:maxLines="1"
                 android:drawableStart="@drawable/baseline_person_24"
-                android:hint="@string/username" />
+                android:hint="@string/username"
+                />
 
             <EditText
                 android:id="@+id/edtTxtEmail"
@@ -50,6 +52,7 @@
                 style="@style/edit_text"
                 android:layout_marginTop="20dp"
                 android:drawableStart="@drawable/baseline_lock_24"
+                android:inputType="textPassword"
                 android:hint="@string/password" />
 
             <EditText
@@ -57,6 +60,7 @@
                 style="@style/edit_text"
                 android:layout_marginTop="20dp"
                 android:drawableStart="@drawable/baseline_lock_24"
+                android:inputType="textPassword"
                 android:hint="@string/confirm_password" />
 
             <EditText
