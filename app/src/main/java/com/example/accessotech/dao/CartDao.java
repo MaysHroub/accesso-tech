@@ -11,10 +11,11 @@ import java.util.List;
 
 public class CartDao {
 
-    private Context context;
+    private final Context context;
     private List<CartItem> cartItems;
 
     public CartDao(Context context) {
+        this.context = context;
         cartItems = new ArrayList<>();
         if (SharedPrefsManager.isCartPreviouslySaved(context))
             cartItems = SharedPrefsManager.loadCartItems(context);

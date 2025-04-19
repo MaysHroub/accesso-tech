@@ -55,6 +55,7 @@ public class CartActivity extends AppCompatActivity {
         Button btnCheckout = findViewById(R.id.btnCheckout);
         if (cartDao.isEmpty()) {
             btnCheckout.setEnabled(false);
+            btnCheckout.setText("x");
             txtViewEmptyCart.setVisibility(VISIBLE);
         }
         updateTextViewTotalPrice();
