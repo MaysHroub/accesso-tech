@@ -48,7 +48,7 @@ public class FilteredItemAdapter extends RecyclerView.Adapter<ItemViewHolder> {
     public void onBindViewHolder(@NonNull ItemViewHolder holder, int position) {
         Item item = filteredItems.get(position);
         holder.txtViewName.setText(item.getName());
-        holder.txtViewPrice.setText(item.getUnitPrice()+"");
+        holder.txtViewPrice.setText(String.format("%.2f", item.getDiscountedPrice()));
         holder.txtViewRating.setText(item.getRating()+"");
         holder.txtViewQuantityInStock.setText(item.getQuantityInStock()+"");
         if (item.getDiscount() > 0)
@@ -56,8 +56,7 @@ public class FilteredItemAdapter extends RecyclerView.Adapter<ItemViewHolder> {
         else
             holder.txtViewDiscount.setVisibility(GONE);
 
-        // TODO: Fix the image path and replace it with resource id
-        // holder.imgItem.setImageURI(Uri.parse(item.getImgUrl()));
+        holder.imgItem.setImageResource(item.getImgResId());
 
         holder.addClickListener(context, item);
     }
@@ -86,9 +85,9 @@ public class FilteredItemAdapter extends RecyclerView.Adapter<ItemViewHolder> {
                 mask[MANUFACTURER] = false;
             if (rating != 0 && item.getRating() != rating)
                 mask[RATING] = false;
-            if (fromPrice != 0 && item.getUnitPrice() < fromPrice)
+            if (fromPrice != 0 && item.getDiscountedPrice() < fromPrice)
                 mask[FROM_PRICE] = false;
-            if (toPrice != 0 && item.getUnitPrice() > toPrice)
+            if (toPrice != 0 && item.getDiscountedPrice() > toPrice)
                 mask[TO_PRICE] = false;
 
             boolean addItem = mask[CATEGORY] & mask[MANUFACTURER] & mask[RATING] & mask[FROM_PRICE] & mask[TO_PRICE];

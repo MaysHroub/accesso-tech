@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.activity.EdgeToEdge;
@@ -24,6 +25,7 @@ public class ItemDetailsActivity extends AppCompatActivity {
     private TextView txtViewName, txtViewRating, txtViewPrice,
             txtViewQuantityInStock, txtViewDiscount, txtViewDescription;
     private Button btnAddToCart;
+    private ImageView imgItemInDetails;
     private Item item;
     private CartDao cartDao;
 
@@ -59,17 +61,16 @@ public class ItemDetailsActivity extends AppCompatActivity {
         txtViewDiscount = findViewById(R.id.txtViewDiscount);
         txtViewDescription = findViewById(R.id.txtViewDescription);
         btnAddToCart = findViewById(R.id.btnAddToCart);
+        imgItemInDetails = findViewById(R.id.imgItemInDetails);
     }
 
     private void fillViews() {
-        // TODO: link the imageview with the resource id in item object
-        // TODO: show the price with discount instead of original price
-
         txtViewName.setText(item.getName());
         txtViewRating.setText(item.getRating()+"");
-        txtViewPrice.setText(item.getUnitPrice()+"");
+        txtViewPrice.setText(String.format("%.2f", item.getDiscountedPrice()));
         txtViewQuantityInStock.setText(item.getQuantityInStock()+"");
         txtViewDescription.setText(item.getDescription());
+        imgItemInDetails.setImageResource(item.getImgResId());
 
         if (item.getDiscount() > 0)
             txtViewDiscount.setText(String.format("%d%% OFF", item.getDiscount()));

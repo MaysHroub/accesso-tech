@@ -79,12 +79,12 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="954"
-            app:layout_constraintBottom_toBottomOf="@+id/txtTotalPrice"
-            app:layout_constraintStart_toEndOf="@+id/txtTotalPrice"
-            app:layout_constraintTop_toTopOf="@+id/txtTotalPrice" />
+            app:layout_constraintBottom_toBottomOf="@+id/txtViewTotalPrice"
+            app:layout_constraintStart_toEndOf="@+id/txtViewTotalPrice"
+            app:layout_constraintTop_toTopOf="@+id/txtViewTotalPrice" />
 
         <TextView
-            android:id="@+id/txtTotalPrice"
+            android:id="@+id/txtViewTotalPrice"
             style="@style/large_dark_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

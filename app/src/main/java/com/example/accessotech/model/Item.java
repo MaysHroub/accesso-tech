@@ -15,7 +15,7 @@ public class Item {
 
     private int id;
     private String name, description, category, manufacturer;
-    private String imgUrl;
+    private int imgResId;
     private float unitPrice;
     private int quantityInStock;
     private int rating; // range: 0-5
@@ -27,7 +27,8 @@ public class Item {
         return id == ((Item) obj).id;
     }
 
-    // TODO: add method in Item which returns price after discount
-    // TODO: replace imgUrl with imgResId and store images in drawable
+    public float getDiscountedPrice() {
+        return unitPrice * (1f - discount/100f);
+    }
 
 }

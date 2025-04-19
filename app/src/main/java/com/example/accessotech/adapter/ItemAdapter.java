@@ -36,7 +36,7 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemViewHolder> {
     public void onBindViewHolder(@NonNull ItemViewHolder holder, int position) {
         Item item = items.get(position);
         holder.txtViewName.setText(item.getName());
-        holder.txtViewPrice.setText(item.getUnitPrice()+"");
+        holder.txtViewPrice.setText(String.format("%.2f", item.getDiscountedPrice()));
         holder.txtViewRating.setText(item.getRating()+"");
         holder.txtViewQuantityInStock.setText(item.getQuantityInStock()+"");
         if (item.getDiscount() > 0)
@@ -44,8 +44,7 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemViewHolder> {
         else
             holder.txtViewDiscount.setVisibility(GONE);
 
-        // TODO: Fix the image path and replace it with resource id
-        // holder.imgItem.setImageURI(Uri.parse(item.getImgUrl()));
+        holder.imgItem.setImageResource(item.getImgResId());
 
         holder.addClickListener(context, item);
     }

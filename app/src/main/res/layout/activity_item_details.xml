@@ -27,7 +27,7 @@
             app:srcCompat="@drawable/baseline_arrow_back_24" />
 
         <ImageView
-            android:id="@+id/imgItem"
+            android:id="@+id/imgItemInDetails"
             android:layout_width="240dp"
             android:layout_height="240dp"
             app:layout_constraintBottom_toBottomOf="parent"

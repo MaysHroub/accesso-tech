@@ -47,8 +47,7 @@ public class CartActivity extends AppCompatActivity {
     }
 
     private void setUpViews() {
-        // TODO: rename components in xml
-        txtViewTotalPrice = findViewById(R.id.txtTotalPrice);
+        txtViewTotalPrice = findViewById(R.id.txtViewTotalPrice);
         recyclerViewCartItems = findViewById(R.id.recyclerViewCartItems);
         Button btnCheckout = findViewById(R.id.btnCheckout);
         if (cartDao.isEmpty())

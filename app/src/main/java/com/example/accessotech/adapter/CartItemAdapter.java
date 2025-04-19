@@ -40,11 +40,9 @@ public class CartItemAdapter extends RecyclerView.Adapter<CartItemAdapter.ItemVi
     public void onBindViewHolder(@NonNull ItemViewHolder holder, int position) {
         CartItem cartItem = cartItems.get(position);
         holder.txtViewItemName.setText(cartItem.getItem().getName());
-        // TODO: replace it with discounted price
-        holder.txtViewItemPrice.setText(cartItem.getItem().getUnitPrice()+"");
+        holder.txtViewItemPrice.setText(String.format("%.2f", cartItem.getItem().getDiscountedPrice()));
         holder.txtViewItemQuantity.setText(cartItem.getQuantityInCart()+"");
-        // TODO: connect imgItem with item resource id image
-
+        holder.imgItem.setImageResource(cartItem.getItem().getImgResId());
         addButtonClickListeners(holder, cartItem);
     }
 
