@@ -81,9 +81,10 @@ public class CartActivity extends AppCompatActivity {
             }
         }
         itemDao.saveAllItems(items);
-        Cart.getInstance().clear();
 
-        recyclerViewCartItems.getAdapter().notifyDataSetChanged();
+        int cartSize = Cart.getInstance().size();
+        Cart.getInstance().clear();
+        recyclerViewCartItems.getAdapter().notifyItemRangeRemoved(0, cartSize);
         updateTextViewTotalPrice();
         showCartEmptyText();
         disableCheckoutButton();
@@ -93,8 +94,9 @@ public class CartActivity extends AppCompatActivity {
     public void clearCart(View view) {
         if (Cart.getInstance().isEmpty()) return;
         DialogManager.showDialog(this, "Clear Cart", "Are you sure you want to clear your cart?", () -> {
+            int cartSize = Cart.getInstance().size();
             Cart.getInstance().clear();
-            recyclerViewCartItems.getAdapter().notifyDataSetChanged();
+            recyclerViewCartItems.getAdapter().notifyItemRangeRemoved(0, cartSize);
             updateTextViewTotalPrice();
             showCartEmptyText();
             disableCheckoutButton();

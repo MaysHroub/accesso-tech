@@ -39,10 +39,10 @@ public class CartItemAdapter extends RecyclerView.Adapter<CartItemAdapter.ItemVi
         holder.txtViewItemPrice.setText(String.format("%.2f", cartItem.getItem().getDiscountedPrice()));
         holder.txtViewItemQuantity.setText(cartItem.getQuantityInCart()+"");
         holder.imgItem.setImageResource(cartItem.getItem().getImgResId());
-        addButtonClickListeners(holder, cartItem);
+        addButtonClickListeners(holder, cartItem, position);
     }
 
-    private void addButtonClickListeners(@NonNull ItemViewHolder holder, CartItem cartItem) {
+    private void addButtonClickListeners(@NonNull ItemViewHolder holder, CartItem cartItem, int position) {
         holder.btnRemoveItem.setOnClickListener(v -> {
             DialogManager.showDialog(
                     context,
@@ -50,7 +50,7 @@ public class CartItemAdapter extends RecyclerView.Adapter<CartItemAdapter.ItemVi
                     "Are you sure you want to remove this item?",
                     () -> {
                         Cart.getInstance().remove(cartItem);
-                        notifyDataSetChanged();
+                        notifyItemRemoved(position);
                         if (getItemCount() == 0) {
                             ((CartActivity) context).showCartEmptyText();
                             ((CartActivity) context).disableCheckoutButton();
