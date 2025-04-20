@@ -36,3 +36,8 @@ Note: Screenshots were taken on Google Pixel 9 with resolution of `1080 x 2424 p
 ## Demo Video
 
 [--> Click Me](https://drive.google.com/file/d/1tN3-7GJVkrZrrNLXLLkFCOZgg9bUCyaT/view?usp=sharing)
+
+
+## Developer's Note
+
+خخخ هالاساينمنت ما خلّى فينا لا ظهر ولا رقبة ولا عينين
